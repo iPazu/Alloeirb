@@ -1,8 +1,32 @@
 <template>
   <div class="product-card">
-    <el-row><h1>{{productData.name}}</h1></el-row>
-    <el-row><img class='icon' src="../assets/crepe.png" alt="Crepe image"></el-row>
-    <el-input-number class="input" v-model="number" @change="handleChange" :min="1" :max="50"></el-input-number>
+    <template>
+
+      <v-card max-width="250">
+        <v-card-title class="flex justify-center" >{{productData.name}}</v-card-title>
+
+        <v-img max-height="100"
+               max-width="100" align="center" src="../assets/crepe.png"></v-img>
+
+        <v-divider class="mx-4"></v-divider>
+
+        <v-card-title>Combien en veux tu</v-card-title>
+
+        <v-card-text>
+          <v-chip-group
+              align="center"
+              active-class="deep-purple accent-4 white--text"
+              column
+          >
+            <v-chip>{{productData.amount1}}</v-chip>
+
+            <v-chip>{{productData.amount2}}</v-chip>
+
+            <v-chip>{{productData.amount3}}</v-chip>
+          </v-chip-group>
+        </v-card-text>
+      </v-card>
+    </template>
 
   </div>
 </template>
@@ -28,7 +52,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 .product-card{
   margin-right: auto;
   margin-left: auto;
@@ -39,14 +63,13 @@ export default {
   height: 25%;
 
 }
-.icon{
-  align-items: center;
-  width: 25%;
-  padding-bottom: 15%;
-  height: 25%;
+.v-card__title {
 
+  justify-content: center;
 }
-.input{
-  padding-bottom: 10%;
+.v-slide-group__content{
+  justify-content: center;
 }
+
+
 </style>

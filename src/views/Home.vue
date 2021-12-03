@@ -1,10 +1,8 @@
 <template>
   <div class="command">
-    <v-container class="grey lighten-5">
-      <v-row><h1>Salut {{$store.state.user_id}}</h1></v-row>
-      <v-row ><h1>Prêt à passer à la vitesse supérieure ? <i class="el-icon-phone"></i></h1></v-row>
-      <v-row><v-btn x-large @click="$router.push('order')" class="command-button">Commandez</v-btn></v-row>
-    </v-container>
+      <h1>Salut {{$store.state.user_id}}</h1>
+      <h1>Prêt à passer à la vitesse supérieure ? <i class="el-icon-phone"></i></h1>
+      <v-btn x-large @click="$router.push('order')" class="command-button">Commandez</v-btn>
   </div>
 </template>
 
@@ -35,25 +33,25 @@ export default {
 
 </script>
 
+<style lang="scss">
 
-<style>
-.command{
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
+.command {
+  margin: 0;
+  position: absolute;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  @media(max-width: 600px) {
+    width: 100%;
+  }
 }
-.el-icon-phone{
-  font-size: 0.9em;
+.command > h1:first-child{
+  padding-bottom: 5%;
+  font-size: 3em;
+}
+.command > h1{
+  padding-bottom: 5%;
+}
 
-}
-.container{
-  width: auto;
-}
-h1{
-  padding-bottom: 1em;
-}
-.command-button{
-  padding: 4em 8em;
-}
 </style>
