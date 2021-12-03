@@ -1,12 +1,11 @@
 <template>
-    <div class="command">
-      <el-row>
-        <el-col><h1>Salut {{$store.state.user_id}}</h1></el-col>
-        <el-col ><h1>Prêt à passer à la vitesse supérieure ? <i class="el-icon-phone"></i></h1></el-col>
-        <el-col><el-button @click="$router.push('order')" class="command-button">Commandez</el-button></el-col>
-
-      </el-row>
-    </div>
+  <div class="command">
+    <v-container class="grey lighten-5">
+      <v-row><h1>Salut {{$store.state.user_id}}</h1></v-row>
+      <v-row ><h1>Prêt à passer à la vitesse supérieure ? <i class="el-icon-phone"></i></h1></v-row>
+      <v-row><v-btn x-large @click="$router.push('order')" class="command-button">Commandez</v-btn></v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
@@ -18,19 +17,19 @@ export default {
   components: {
   },
   mounted() {
-      let user_id = undefined;
-      user.getUserId((uid) => {
-        console.log('Trying connectionn');
-        if(uid === 'undefined') {
-          console.log("user not defined attempting cas auth")
-          window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirect?token=local";
-        }
-        if(store.state.user_id === 'undefined'){
-          store.commit("setUserID",uid);
-        }
-        user_id = uid;
-        console.log('Connected as '+ user_id);
-      });
+    let user_id = undefined;
+    user.getUserId((uid) => {
+      console.log('Trying connection');
+      if(uid === 'undefined') {
+        console.log("user not defined attempting cas auth")
+        window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirect?token=local";
+      }
+      if(store.state.user_id === 'undefined'){
+        store.commit("setUserID",uid);
+      }
+      user_id = uid;
+      console.log('Connected as '+ user_id);
+    });
   }
 }
 
@@ -47,6 +46,9 @@ export default {
 .el-icon-phone{
   font-size: 0.9em;
 
+}
+.container{
+  width: auto;
 }
 h1{
   padding-bottom: 1em;
