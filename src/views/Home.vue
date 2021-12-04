@@ -1,9 +1,12 @@
 <template>
-  <div class="command">
-      <h1>Salut {{$store.state.user_id}}</h1>
-      <h1>Prêt à passer à la vitesse supérieure ? <i class="el-icon-phone"></i></h1>
-      <v-btn x-large @click="$router.push('order')" class="command-button">Commandez</v-btn>
-  </div>
+  <v-app>
+    <div class="command">
+        <h1 class="text-h3">Salut {{$store.state.user_id}}</h1>
+        <h1 class="text-h4">Prêt à passer à la vitesse supérieure ? </h1>
+        <v-btn color="primary" x-large @click="$router.push('order')" class="command-button">Commander</v-btn>
+    </div>
+  </v-app>
+
 </template>
 
 <script>

@@ -1,0 +1,70 @@
+<template>
+<div>
+  <v-app>
+    <h1 class="checkout-title text-h3">Votre pannier</h1>
+    <v-row>
+    <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
+    <v-sheet elevation="2" height="80px" class="mx-3 my-10 d-flex flex-row" color="grey lighten-5" v-for="product in $store.state.products" :key="product.id">
+        <v-img class="ml-3 mt-4" :src="require(`../assets/${product.icon_url}`)" max-width="50px" max-height="50px"/>
+       <p class="flex justify-start ml-5 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{product.amount}}</p>
+      <p class="flex justify-start ml-2 text-center">{{ product.display_name}}</p>
+      <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{product.amount*product.unit_price}} €</p>
+
+
+    </v-sheet>
+    </v-col>
+    <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
+      <div class="checkout-box " >
+        <v-card class=" mt-16" width="500px" height="360px">
+          <v-card-title class="text-h5 flex justify-center">Détails de livraison</v-card-title>
+          <v-card-text>
+            <v-text-field type="number" label="télephone"/>
+            <v-text-field label="adresse"/>
+            <v-card-title class="flex justify-center">{{$store.getters.getTotalCheckout}} €</v-card-title>
+            <v-btn large color="primary">Commander</v-btn>
+          </v-card-text>
+        </v-card>
+      </div>
+
+    </v-col>
+
+  </v-row>
+  </v-app>
+</div>
+</template>
+
+<script>
+
+import store from "@/store";
+import router from "@/router";
+
+export default {
+  name: "Cart",
+  methods: {
+
+  },
+  mounted() {
+    scroll(0,0)
+
+    if(store.state.user_id === 'undefined'){
+      router.push({name:'Home'});
+      window.location.href = window.location.href.replace("/order","")
+    }
+  }
+
+}
+</script>
+
+<style scoped>
+  .checkout-title{
+    padding-top: 50px;
+  }
+.number{
+  background-color: white;
+  height: 50px;
+  width: 60px;
+}
+.my-15{
+  margin-top: 0px;
+}
+</style>

@@ -1,28 +1,35 @@
 <template>
   <div>
+    <v-app>
     <v-container class="mx">
       <v-row>
         <v-col>
-          <h1>Prêt à commander ?</h1>
+          <h1 class="text-h3" style="margin-bottom: 25px">Choissisez votre commande</h1>
+          <v-divider style="margin-bottom: 20px"></v-divider>
+
         </v-col>
       </v-row>
+
       <v-row >
-        <v-col md="4" sm="6" ><ProductCard :product-data="crepesucre"></ProductCard></v-col>
-        <v-col md="4" sm="6" ><ProductCard :product-data="crepenut"></ProductCard></v-col>
-        <v-col md="4" sm="6" ><ProductCard :product-data="crepeconf"></ProductCard></v-col>
-        </v-row>
+          <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
+          <ProductCard :product-data="product"></ProductCard>
+        </v-col>
+      </v-row>
       <v-row>
         <v-col>
-          <v-btn x-large class="command-button" >Commander</v-btn>
+          <v-btn color="primary" @click="$router.push('order/cart')" x-large class="command-button" >Voir le pannier</v-btn>
         </v-col>
       </v-row>
 
     </v-container>
+    </v-app>
   </div>
 </template>
 
 <script>
 import ProductCard from '../components/ProductCard'
+import store from "@/store";
+import router from "@/router";
 
 export default {
   name: "Order",
@@ -31,28 +38,21 @@ export default {
   },
   data(){
     return {
-      crepenut : {
-        name:"Crepe au nutella",
+    crepe: {
+      id: "crepenut",
+          display_name: "Crepe au nutella",
         unit_price:"0.15",
         amount:0,
-        icon_url:"../assets/crepe.png"
-      },
-      crepesucre : {
-        name:"Crepe au sucre",
-        unit_price:"0.10",
-        amount:0,
-        icon_url:"../assets/crepe.png"
-      },
-      crepeconf : {
-        name:"Crepe à la confiture",
-        unit_price:"0.15",
-        amount:0,
-        icon_url:"../assets/crepe.png"
-      }
+        icon_url:"crepe-nutella.png"
+    },
     }
   },
   mounted() {
-
+    scroll(0,0)
+    if(store.state.user_id === 'undefined'){
+      router.push({name:'Home'});
+      window.location.href = window.location.href.replace("/order","")
+    }
   }
 }
 </script>

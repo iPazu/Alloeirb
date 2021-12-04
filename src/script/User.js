@@ -15,7 +15,7 @@ export async function login(token,ticket){
         console.log("from login : "+user_id)
         store.commit("setUserID",user_id);
         router.push({name:'Home'});
-        window.location.href = "http://localhost:8080/#"
+        window.location.href = window.location.href.replace(/login.*/, '')
         console.log("redirecting")
     })
 }
