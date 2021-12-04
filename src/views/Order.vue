@@ -7,9 +7,9 @@
         </v-col>
       </v-row>
       <v-row >
-        <v-col md="4" sm="6" ><ProductCard :product-data="crepe"></ProductCard></v-col>
-        <v-col md="4" sm="6" ><ProductCard :product-data="crepe"></ProductCard></v-col>
-        <v-col md="4" sm="6" ><ProductCard :product-data="crepe"></ProductCard></v-col>
+        <v-col md="4" sm="6" ><ProductCard :product-data="crepesucre"></ProductCard></v-col>
+        <v-col md="4" sm="6" ><ProductCard :product-data="crepenut"></ProductCard></v-col>
+        <v-col md="4" sm="6" ><ProductCard :product-data="crepeconf"></ProductCard></v-col>
         </v-row>
       <v-row>
         <v-col>
@@ -31,12 +31,22 @@ export default {
   },
   data(){
     return {
-      crepe : {
+      crepenut : {
         name:"Crepe au nutella",
+        unit_price:"0.15",
+        amount:0,
+        icon_url:"../assets/crepe.png"
+      },
+      crepesucre : {
+        name:"Crepe au sucre",
         unit_price:"0.10",
-        amount1:"1",
-        amount2:"5",
-        amount3:"20",
+        amount:0,
+        icon_url:"../assets/crepe.png"
+      },
+      crepeconf : {
+        name:"Crepe à la confiture",
+        unit_price:"0.15",
+        amount:0,
         icon_url:"../assets/crepe.png"
       }
     }

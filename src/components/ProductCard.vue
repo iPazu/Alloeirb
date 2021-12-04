@@ -8,18 +8,18 @@
 
           <v-card-title >Combien en veux tu</v-card-title>
           <v-chip-group style="padding-bottom: 10px">
-            <v-chip @click="editNumber(number)" outlined> {{productData.amount1}}</v-chip>
-            <v-chip outlined> {{productData.amount2}}</v-chip>
-            <v-chip outlined> {{productData.amount3}}</v-chip>
+            <v-chip @click="editNumber(1)" outlined> 1</v-chip>
+            <v-chip @click="editNumber(5)" outlined> 5</v-chip>
+            <v-chip @click="editNumber(20)" outlined> 20</v-chip>
           </v-chip-group>
           <v-divider style="padding-bottom: 20px"></v-divider>
 
           <v-row style="justify-content: center">
             <v-col cols="6"   ><v-text-field
-                :placeholder="number"
                 filled
                 rounded
                 dense
+                :value="productData.amount.toString()"
                 type="number"
 
             ></v-text-field></v-col>
@@ -37,14 +37,12 @@ export default {
   },
   data() {
     return {
-      number: 0
     };
   },
   methods: {
-      editNumber(n){
-        console.log(this.number);
-        this.number = n;
-      }
+    editNumber: function(n) {
+      this.productData.amount += n;
+    }
   }
 }
 </script>
