@@ -1,33 +1,31 @@
 <template>
   <div class="product-card">
-    <template>
+        <v-card width="500px" outlined>
 
-      <v-card max-width="250">
-        <v-card-title class="flex justify-center" >{{productData.name}}</v-card-title>
+          <v-card-title  class="flex justify-center" >{{productData.name}}</v-card-title>
 
-        <v-img max-height="100"
-               max-width="100" align="center" src="../assets/crepe.png"></v-img>
+          <v-img style="margin: auto" src="../assets/crepe.png" width="50px" height="50px"/>
 
-        <v-divider class="mx-4"></v-divider>
-
-        <v-card-title>Combien en veux tu</v-card-title>
-
-        <v-card-text>
-          <v-chip-group
-              align="center"
-              active-class="deep-purple accent-4 white--text"
-              column
-          >
-            <v-chip>{{productData.amount1}}</v-chip>
-
-            <v-chip>{{productData.amount2}}</v-chip>
-
-            <v-chip>{{productData.amount3}}</v-chip>
+          <v-card-title >Combien en veux tu</v-card-title>
+          <v-chip-group style="padding-bottom: 10px">
+            <v-chip @click="editNumber(number)" outlined> {{productData.amount1}}</v-chip>
+            <v-chip outlined> {{productData.amount2}}</v-chip>
+            <v-chip outlined> {{productData.amount3}}</v-chip>
           </v-chip-group>
-        </v-card-text>
-      </v-card>
-    </template>
+          <v-divider style="padding-bottom: 20px"></v-divider>
 
+          <v-row style="justify-content: center">
+            <v-col cols="6"   ><v-text-field
+                :placeholder="number"
+                filled
+                rounded
+                dense
+                type="number"
+
+            ></v-text-field></v-col>
+          </v-row>
+
+      </v-card>
   </div>
 </template>
 
@@ -39,37 +37,33 @@ export default {
   },
   data() {
     return {
-      radio1: 1,
-      number: 1
+      number: 0
     };
   },
   methods: {
-    handleChange(value) {
-      console.log(value)
-    },
-
+      editNumber(n){
+        console.log(this.number);
+        this.number = n;
+      }
   }
 }
 </script>
 
 <style lang="scss">
 .product-card{
-  margin-right: auto;
-  margin-left: auto;
-
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  background-color: whitesmoke;
-  width: 25%;
-  height: 25%;
+  margin-left: 25px;
+  margin-right: 25px;
+  justify-content: center;
 
 }
-.v-card__title {
 
+.v-card__title{
   justify-content: center;
 }
 .v-slide-group__content{
   justify-content: center;
 }
-
-
+.v-text-field input{
+  text-align: center;
+}
 </style>

@@ -1,8 +1,23 @@
 <template>
   <div>
-    <h1>Commandez ce que vous voulez {{$store.state.user_id}}</h1>
-    <ProductCard  v-bind:productData="crepe" ></ProductCard>
-    <v-btn class="command-button">Lancer votre commande</v-btn>
+    <v-container class="mx">
+      <v-row>
+        <v-col>
+          <h1>Prêt à commander ?</h1>
+        </v-col>
+      </v-row>
+      <v-row >
+        <v-col md="4" sm="6" ><ProductCard :product-data="crepe"></ProductCard></v-col>
+        <v-col md="4" sm="6" ><ProductCard :product-data="crepe"></ProductCard></v-col>
+        <v-col md="4" sm="6" ><ProductCard :product-data="crepe"></ProductCard></v-col>
+        </v-row>
+      <v-row>
+        <v-col>
+          <v-btn x-large class="command-button" >Commander</v-btn>
+        </v-col>
+      </v-row>
+
+    </v-container>
   </div>
 </template>
 
@@ -17,12 +32,13 @@ export default {
   data(){
     return {
       crepe : {
-        name:"Crepe",
+        name:"Crepe au nutella",
         unit_price:"0.10",
         amount1:"1",
         amount2:"5",
         amount3:"20",
-        icon_url:"../assets/crepe.png"}
+        icon_url:"../assets/crepe.png"
+      }
     }
   },
   mounted() {
@@ -32,7 +48,13 @@ export default {
 </script>
 
 <style scoped>
-  .command-button{
-    margin-top: 5%;
-  }
+.command-button{
+  margin-top: 60px;
+
+}
+h1{
+  margin-top: 30px;
+  margin-bottom: 50px;
+
+}
 </style>
