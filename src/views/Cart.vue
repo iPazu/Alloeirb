@@ -9,8 +9,6 @@
        <p class="flex justify-start ml-5 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{product.amount}}</p>
       <p class="flex justify-start ml-2 text-center">{{ product.display_name}}</p>
       <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{product.amount*product.unit_price}} €</p>
-
-
     </v-sheet>
     </v-col>
     <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
@@ -18,16 +16,29 @@
         <v-card class=" mt-16" width="500px" height="360px">
           <v-card-title class="text-h5 flex justify-center">Détails de livraison</v-card-title>
           <v-card-text>
-            <v-text-field type="number" label="télephone"/>
-            <v-text-field label="adresse"/>
+            <v-text-field
+                v-model="phone"
+                :rules="validPhoneNumber"
+                counter
+                maxlength="10"
+                  hint="Entre ton numéro pour qu'on puisse t'appeler si nécessaire"
+                label="télephone"
+            ></v-text-field>
+            <v-text-field
+                v-model="adresse"
+                :rules="validAdress"
+                counter
+                maxlength="50"
+                hint="Donne nous ton adresse pour qu'on te livre"
+                label="adresse"
+            ></v-text-field>
+
             <v-card-title class="flex justify-center">{{$store.getters.getTotalCheckout}} €</v-card-title>
-            <v-btn large color="primary">Commander</v-btn>
+            <v-btn large @click="sendJsonOrder" color="primary">Commander</v-btn>
           </v-card-text>
         </v-card>
       </div>
-
     </v-col>
-
   </v-row>
   </v-app>
 </div>
@@ -37,16 +48,58 @@
 
 import store from "@/store";
 import router from "@/router";
+import * as order from '../script/Order'
 
 export default {
   name: "Cart",
   methods: {
+    getJsonOrder(){
+      let obj = {phone: this.phone,adress: this.adresse};
+      const product_id = store.state.products.map(product => {
+        return product.id;
+      });
+      const amount = store.state.products.map(product => {
+        return product.amount;
+      });
+      let tmpobj = {};
+      for (let i = 0; i < amount.length; i++) {
+        tmpobj[product_id[i]] = amount[i];
+      }
+      obj["products"] = tmpobj
+      return obj;
+    },
+    checkIfCorrectInput(){
+      return !(isNaN(this.phone) || this.phone.length !== 10 || this.adresse.length > 70);
+    },
+    sendJsonOrder(){
+      console.log(this.checkIfCorrectInput())
+      console.log(this.getJsonOrder())
+      if(this.checkIfCorrectInput()){
+        console.log("sending json order");
+        order.sendOrder(this.getJsonOrder(),(orderid) => {
+          console.log(orderid)
+          store.commit("setOrderID",orderid.data)
+          router.push({ path: `/delivery/${store.state.order_id}`});
+        });
+      }
+    }
+  },
+  data(){
+    return{
+      phone: '',
+      adresse: '',
+      validPhoneNumber: [v => (v.length === 10 && !isNaN(v)) || 'Entrez un numéro valide'],
+      validAdress: [v => v.length > 10 || 'Entrez une adresse valide'],
 
+    }
   },
   mounted() {
     scroll(0,0)
-
     if(store.state.user_id === 'undefined'){
+      router.push({name:'Home'});
+      window.location.href = window.location.href.replace("/order/cart","")
+    }
+    if(store.state.order_id !== 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order","")
     }
@@ -64,7 +117,5 @@ export default {
   height: 50px;
   width: 60px;
 }
-.my-15{
-  margin-top: 0px;
-}
+
 </style>

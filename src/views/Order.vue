@@ -36,23 +36,17 @@ export default {
   components: {
     ProductCard,
   },
-  data(){
-    return {
-    crepe: {
-      id: "crepenut",
-          display_name: "Crepe au nutella",
-        unit_price:"0.15",
-        amount:0,
-        icon_url:"crepe-nutella.png"
-    },
-    }
-  },
   mounted() {
     scroll(0,0)
     if(store.state.user_id === 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order","")
     }
+    if(store.state.order_id !== 'undefined'){
+      router.push({name:'Home'});
+      window.location.href = window.location.href.replace("/order","")
+    }
+
   }
 }
 </script>

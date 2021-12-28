@@ -6,34 +6,25 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user_id: 'undefined',
-    products: [
-       {
-        id: "crepenut",
-        display_name: "Crepe au nutella",
-        unit_price:"0.15",
-        amount:0,
-        icon_url:"crepe-nutella.png"
-      },
-      {
-          id: "crepsucre",
-          display_name:"Crepe au sucre",
-          unit_price:"0.10",
-          amount:0,
-          icon_url:"crepe-sucre.png"
-      },
-       {   id: "crepeconf",
-           display_name:"Crepe à la confiture",
-           unit_price:"0.15",
-           amount:0,
-           icon_url:"crepe-confiture.png"
-      },
-    ],
+      user_id: 'undefined',
+      order_id: 'undefined',
+      products: 'undefined',
+      privilege: 'customer'
   },
   mutations: {
-    setUserID (state,newuser_id) {
-      state.user_id = newuser_id;
-    }
+      setUserID (state,newuser_id) {
+        state.user_id = newuser_id;
+      },
+      setOrderID (state,orderid) {
+          state.order_id = orderid;
+      },
+      setProducts (state,products) {
+          state.products = products;
+      },
+      setPrivilege (state,privilege) {
+          state.privilege = privilege;
+      }
+
   },
   getters: {
         getTotalCheckout: state => {

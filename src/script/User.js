@@ -1,22 +1,55 @@
 import axios from "axios";
 import store from '../store/index'
 import router from '../router/index'
+import * as order from "@/script/Order";
 
 
 export async function login(token,ticket){
     let user_id;
+    let orderid;
+    let privilege;
     axios.request(getRequestOptions(`/login/${token}/${ticket}`,"GET"))
         .then((response) => {
             console.log("from axios : "+ response.data);
-            user_id = response.data;
+            console.log(response.data)
+            user_id = response.data.user_id;
+            orderid = response.data.orderid;
+            privilege = response.data.privilege;
+
         }).catch((error) => {
         console.log(error);
     }).then(function(){
-        console.log("from login : "+user_id)
+        console.log("from login : ")
+        console.log(user_id)
+        console.log(orderid)
+
         store.commit("setUserID",user_id);
+        store.commit("setPrivilege",privilege);
+
+        if(orderid === undefined)
+            store.commit("setOrderID",'undefined');
+        else
+            store.commit("setOrderID",orderid);
+
+        if(store.state.products === 'undefined'){
+            console.log("products undefined");
+            order.getProducts((products) => {
+                console.log(JSON.stringify(products))
+                store.commit("setProducts",[...products]);
+            })
+        }
+
+        if(store.state.order_id === 'undefined'){
+            console.log("order undefined");
+            order.getProducts((products) => {
+                console.log(JSON.stringify(products))
+                store.commit("setProducts",[...products]);
+            })
+        }
         router.push({name:'Home'});
         window.location.href = window.location.href.replace(/login.*/, '')
         console.log("redirecting")
+
     })
 }
 
@@ -38,7 +71,7 @@ export async function getUserId(_callback){
 }
 
 
-function getRequestOptions(path,method){
+export function getRequestOptions(path,method){
     return {
         method: method,
         url: 'http://localhost:3000/api' + path,
@@ -46,3 +79,4 @@ function getRequestOptions(path,method){
     };
 
 }
+

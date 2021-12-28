@@ -17,6 +17,8 @@ export default {
     console.log("ticket: "+ticket)
     console.log("token: "+token)
     user.login(token,ticket);
+    console.log("Trying to fetch products");
+
   }
 }
 

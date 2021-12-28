@@ -1,9 +1,31 @@
 <template>
+
   <v-app>
-    <div class="command">
-        <h1 class="text-h3">Salut {{$store.state.user_id}}</h1>
+    <div class="banner">
+      <h1>AlloEirb</h1>
+    </div>
+    <div>
+        <v-btn color="light-blue" v-if="$store.state.privilege === 'coursier' ||$store.state.privilege === 'admin'"
+               x-large @click="$router.push({ path: `/admin/`})" class="command-button mt-5">Pannel administrateur</v-btn>
+    </div>
+
+    <div class="message">
+
+
+      <h1 class="text-h3">Salut {{$store.state.user_id}}</h1>
+
+      <div class="order" v-if="$store.state.order_id === 'undefined'">
         <h1 class="text-h4">Prêt à passer à la vitesse supérieure ? </h1>
-        <v-btn color="primary" x-large @click="$router.push('order')" class="command-button">Commander</v-btn>
+        <v-btn color="primary" x-large @click="$router.push('order')" class="command-button mt-5">Commander</v-btn>
+      </div>
+
+      <div class="view" v-else>
+        <h1 class="text-h4">Vous avez déja une commande en cours</h1>
+        <v-btn color="primary"  x-large @click="$router.push({ path: `/delivery/${$store.state.order_id}`})" class="command-button mt-5">Voir la commande</v-btn>
+      </div>
+      <div>
+
+      </div>
     </div>
   </v-app>
 
@@ -23,7 +45,8 @@ export default {
       console.log('Trying connection');
       if(uid === 'undefined') {
         console.log("user not defined attempting cas auth")
-        window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirect?token=local";
+            window.location.href = "http://localhost:8080/#/login";
+            //window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirect?token=local";
       }
       if(store.state.user_id === 'undefined'){
         store.commit("setUserID",uid);
@@ -38,7 +61,7 @@ export default {
 
 <style lang="scss">
 
-.command {
+.message {
   margin: 0;
   position: absolute;
   -ms-transform: translate(-50%, -50%);
@@ -49,11 +72,11 @@ export default {
     width: 100%;
   }
 }
-.command > h1:first-child{
+.message > h1:first-child{
   padding-bottom: 5%;
   font-size: 3em;
 }
-.command > h1{
+.message > h1{
   padding-bottom: 5%;
 }
 

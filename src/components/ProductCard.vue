@@ -2,10 +2,10 @@
   <div class="product-card">
         <v-card width="500px" elevation="1"  color="grey lighten-5" outlined>
 
-          <v-card-title  class="flex justify-center" >{{productData.display_name}}</v-card-title>
+          <v-card-title  class="flex justify-center" >{{productData.display_name.toString()}}</v-card-title>
           <v-divider style="padding-bottom: 20px"></v-divider>
 
-          <v-img style="margin: auto" :src="require(`../assets/${productData.icon_url}`)" width="50px" height="50px"/>
+          <v-img style="margin: auto" :src="require(`../assets/${productData.icon_url.toString()}`)" width="50px" height="50px"/>
           <p style="font-weight: bold" class="price">{{productData.unit_price }} €</p>
           <p style="padding-bottom: 5px">Combien en veux-tu</p>
           <v-chip-group style="padding-bottom: 10px">
@@ -22,7 +22,7 @@
                 filled
                 rounded
                 dense
-                :value="productData.amount.toString()"
+                v-model="productData.amount"
                 type="number"
 
             ></v-text-field></v-col>
