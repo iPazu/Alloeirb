@@ -57,7 +57,7 @@
     </v-col>
   </v-row>
 
-  <Map v-if="orderData.status === 'delivering'"></Map>
+  <Map   v-if="orderData.status === 'delivering'"></Map>
 
 </v-app>
 </div>

@@ -1,7 +1,7 @@
 <template>
 <div>
   <v-app>
-    <h1 class="checkout-title text-h3">Votre pannier</h1>
+    <h1 class="checkout-title text-h3">Votre panier</h1>
     <v-row>
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
     <v-sheet elevation="2" height="80px" class="mx-3 my-10 d-flex flex-row" color="grey lighten-5" v-for="product in $store.state.products" :key="product.id">

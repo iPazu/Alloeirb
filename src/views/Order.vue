@@ -17,7 +17,7 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-btn color="primary" @click="$router.push('order/cart')" x-large class="command-button" >Voir le pannier</v-btn>
+          <v-btn color="primary" @click="$router.push('order/cart')" x-large class="command-button" >Voir le panier</v-btn>
         </v-col>
       </v-row>
 

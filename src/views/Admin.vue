@@ -52,12 +52,6 @@ export default {
       console.log(products)
       this.orders = [...products].reverse()
     })
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        console.log(position.coords.latitude, position.coords.longitude);
-        order.sendLocation({latitude:position.coords.latitude,longitude:position.coords.longitude});
-      });
-    }
     this.intervalLocation = setInterval(this.refreshLocation, 5000);
 
 
@@ -73,8 +67,10 @@ export default {
     refreshLocation(){
       console.log("Refreshing location")
       if ("geolocation" in navigator) {
+        console.log("Geoloc activated")
+
         navigator.geolocation.getCurrentPosition(function(position) {
-          console.log(position.coords.latitude, position.coords.longitude);
+            console.log(position.coords.latitude, position.coords.longitude);
           order.sendLocation({latitude:position.coords.latitude,longitude:position.coords.longitude});
         });
       }
