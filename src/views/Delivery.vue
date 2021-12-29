@@ -57,7 +57,7 @@
     </v-col>
   </v-row>
 
-  <Map   v-if="orderData.status === 'delivering'"></Map>
+  <Map   :position="[orderData.latitude,orderData.longitude]" v-if="orderData.status === 'delivering'"></Map>
 
 </v-app>
 </div>
@@ -153,7 +153,7 @@ export default {
       this.orderData = data;
       console.log(data);
     });
-    this.interval = setInterval(this.fetchOrder, 5000);
+    this.interval = setInterval(this.fetchOrder, 50000);
 
   },
   beforeDestroy() {

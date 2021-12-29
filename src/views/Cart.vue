@@ -90,6 +90,7 @@ export default {
       adresse: '',
       validPhoneNumber: [v => (v.length === 10 && !isNaN(v)) || 'Entrez un numéro valide'],
       validAdress: [v => v.length > 10 || 'Entrez une adresse valide'],
+      apiKey: 'pk.eyJ1IjoiaXBhenUiLCJhIjoiY2t4b25rYTdoMXprbjJ4cWs4Zjc4Z24waSJ9.maHkMBz8VRxaRZxbfLNfuA'
 
     }
   },

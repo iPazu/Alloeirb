@@ -9,7 +9,9 @@ export default new Vuex.Store({
       user_id: 'undefined',
       order_id: 'undefined',
       products: 'undefined',
-      privilege: 'customer'
+      privilege: 'customer',
+      map: '',
+      deliveryTime: '',
   },
   mutations: {
       setUserID (state,newuser_id) {
@@ -23,7 +25,10 @@ export default new Vuex.Store({
       },
       setPrivilege (state,privilege) {
           state.privilege = privilege;
-      }
+      },
+      setMap (state,map) {
+          state.map = map;
+      },
 
   },
   getters: {

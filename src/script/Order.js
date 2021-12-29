@@ -11,7 +11,7 @@ export function sendOrder(jsonObject,_then){
 }
 export function sendLocation(jsonObject,_then){
     console.log(jsonObject)
-    axios.post(`${process.env.VUE_APP_API_URL}/api/order/location/update`, jsonObject,{ withCredentials: true })
+    axios.post(`${process.env.VUE_APP_API_URL}/api/location/update`, jsonObject,{ withCredentials: true })
         .then(response => _then(response));
 }
 export function setRanking(jsonObject,orderId,_then){
@@ -35,7 +35,7 @@ export function getOrder(orderId,_callback){
 export function getLocation(orderId,_callback){
     console.log(orderId);
     let data;
-    axios.request(getRequestOptions(`/order/location/${orderId}`,"GET"))
+    axios.request(getRequestOptions(`/location/${orderId}`,"GET"))
         .then((response) => {
             data = response.data;
         }).catch((error) => {
