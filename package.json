@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "dotenv": "^10.0.0",
     "mapbox-gl": "^2.6.1",
     "pusher-js": "^7.0.3",
     "vue": "^2.6.11",

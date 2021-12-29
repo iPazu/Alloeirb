@@ -74,7 +74,7 @@ export async function getUserId(_callback){
 export function getRequestOptions(path,method){
     return {
         method: method,
-        url: 'http://localhost:3000/api' + path,
+        url: `${process.env.VUE_APP_API_URL}/api` + path,
         withCredentials: true,
     };
 

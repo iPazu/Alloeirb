@@ -6,17 +6,17 @@ import {getRequestOptions} from "@/script/User";
 
 export function sendOrder(jsonObject,_then){
     console.log(jsonObject)
-    axios.post('http://localhost:3000/api/order', jsonObject,{ withCredentials: true })
+    axios.post(`${process.env.VUE_APP_API_URL}/api/order`, jsonObject,{ withCredentials: true })
         .then(response => _then(response));
 }
 export function sendLocation(jsonObject,_then){
     console.log(jsonObject)
-    axios.post('http://localhost:3000/api/order/location/update', jsonObject,{ withCredentials: true })
+    axios.post(`${process.env.VUE_APP_API_URL}/api/order/location/update`, jsonObject,{ withCredentials: true })
         .then(response => _then(response));
 }
 export function setRanking(jsonObject,orderId,_then){
     console.log(jsonObject)
-    axios.post(`http://localhost:3000/api/order/ranking/${orderId}`, jsonObject,{ withCredentials: true })
+    axios.post(`${process.env.VUE_APP_API_URL}/api/order/ranking/${orderId}`, jsonObject,{ withCredentials: true })
         .then(response => _then(response));
 }
 export function getOrder(orderId,_callback){
