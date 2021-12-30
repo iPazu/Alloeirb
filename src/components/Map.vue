@@ -1,22 +1,23 @@
 <template>
-  <div class="mapview">
-    <h2 class="time" v-on="getTime">Arrivée dans environ {{time}} minutes</h2>
-    <div id="mapContainer" class="basemap"></div>
+ <div>
+   <h2 class="time" >Arrivée dans environ {{$store.state.deliveryTime}} minutes</h2>
 
-  </div>
+   <div class="mapview">
+     <div id="mapContainer" class="basemap"></div>
+   </div>
+ </div>
+
 
 </template>
 
 <script>
 import mapboxgl from "mapbox-gl";
-import * as order from "@/script/Order";
-import * as localisation from "@/script/Localisation";
-
-
+import store from "@/store";
 export default {
   name: "Map",
   props: {
-    position: []
+    position: [],
+    path: []
   },
   data() {
     return {
@@ -24,56 +25,71 @@ export default {
       map: '',
       intervalLocation: null,
       intervalTime: null,
-      time: 0
+      coursierMarker: null,
     };
   },
   methods: {
     refreshLocation(){
       console.log("Refreshing location")
-      order.getLocation(this.$route.params.orderid, (location) => {
+        let location = this.$store.state.coursierLocation
         console.log(location)
-        new mapboxgl.Marker({
-          color: "#F08080",
-        }).setLngLat([1.4840, 43.6584 ])
-            .addTo(this.map);
-      });
+        this.coursierMarker.setLngLat([location[1], location[0] ])
 
     },
-    arrivalTime(){
-      this.time--;
-      if(this.time === 0){
-        this.time+=2
-      }
+    getMiddle(lat1,lat2,lon1,lon2){
+      lat1 = parseFloat(lat1)
+      lat2 = parseFloat(lat2)
+
+      lon1 = parseFloat(lon1)
+      lon2 = parseFloat(lon2)
+
+      let Bx = Math.cos(lat2) * Math.cos(lon2-lon1);
+      let By = Math.cos(lat2) * Math.sin(lon2-lon1);
+      let latMid = Math.atan2(Math.sin(lat1) + Math.sin(lat2),
+          Math.sqrt( (Math.cos(lat1)+Bx)*(Math.cos(lat1)+Bx) + By*By ) );
+      let lonMid = lon1 + Math.atan2(By, Math.cos(lat1) + Bx);
+      console.log("diplaying middle")
+      console.log(lonMid)
+      console.log(latMid)
+
+      return [latMid,lonMid]
     },
-    getTime(time){
-      let minutes = Math.floor(time/60)
-      return minutes+2
-    }
+    updateDeliveryTime(){
+      store.commit("setDeliveryTime", this.$store.state.deliveryTime-1)
+      if(this.$store.state.deliveryTime === 0){
+        store.commit("setDeliveryTime", this.$store.state.deliveryTime+2)
+      }
+
+    },
   },
   mounted() {
     mapboxgl.accessToken = this.accessToken;
     console.log(this.position)
+    let location = this.$store.state.coursierLocation
+
     this.map = new mapboxgl.Map({
       container: "mapContainer",
       style: "mapbox://styles/mapbox/streets-v11",
-      center:  this.position , //-0.6070,44.8063
-      zoom: 14,
-      maxBounds: [
-        [ 1.2,43], //-0.75  ,43.5
-        [ 1.6,44], //-0.45,45.5
-      ],
+      center:  this.getMiddle(this.position[0], location[1],this.position[1], location[0]) , //-0.6070,44.8063
+      zoom: 13,
+
     });
+    //setting home marker
     new mapboxgl.Marker({
       color: "rgb(37,234,155)",
     }).setLngLat(this.position)
         .addTo(this.map);
+    //setting coursier marker
+    console.log("from map")
+    console.log(location[1])
+    console.log(this.path)
+    this.coursierMarker = new mapboxgl.Marker({
+      color: "#F08080",
+    }).setLngLat([location[1], location[0] ])
+        .addTo(this.map);
 
-    localisation.getLocation((localisation) => {
-      console.log("got loc")
-      console.log(localisation.features[0].geometry.coordinates)
-      console.log(localisation.features[0].properties.segments[0].duration)
 
-      this.time = this.getTime(localisation.features[0].properties.segments[0].duration)
+    this.map.on('load', () => {
       this.map.addSource('route', {
         'type': 'geojson',
         'data': {
@@ -81,7 +97,7 @@ export default {
           'properties': {},
           'geometry': {
             'type': 'LineString',
-            'coordinates':  localisation.features[0].geometry.coordinates
+            'coordinates':  [...this.path]
           }
         }
       });
@@ -98,13 +114,10 @@ export default {
           'line-width': 6,
         }
       });
-
-      this.intervalTime = setInterval(this.arrivalTime, 60000);
-
     })
-    //this.intervalLocation = setInterval(this.refreshLocation, 5000);
 
-
+      this.intervalTime = setInterval(this.updateDeliveryTime, 60000);
+      this.intervalLocation = setInterval(this.refreshLocation, 5000);
   },
   beforeDestroy() {
     clearInterval(this.intervalLocation);
@@ -116,12 +129,16 @@ export default {
 
 <style scoped>
 .mapview{
-  height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
 }
 .basemap {
   width: 100%;
   height: 100%;
 }
+
 .time{
   padding-bottom: 10px;
 }

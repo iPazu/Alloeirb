@@ -9,11 +9,7 @@ export function sendOrder(jsonObject,_then){
     axios.post(`${process.env.VUE_APP_API_URL}/api/order`, jsonObject,{ withCredentials: true })
         .then(response => _then(response));
 }
-export function sendLocation(jsonObject,_then){
-    console.log(jsonObject)
-    axios.post(`${process.env.VUE_APP_API_URL}/api/location/update`, jsonObject,{ withCredentials: true })
-        .then(response => _then(response));
-}
+
 export function setRanking(jsonObject,orderId,_then){
     console.log(jsonObject)
     axios.post(`${process.env.VUE_APP_API_URL}/api/order/ranking/${orderId}`, jsonObject,{ withCredentials: true })
@@ -23,19 +19,6 @@ export function getOrder(orderId,_callback){
     console.log(orderId);
     let data;
     axios.request(getRequestOptions(`/order/get/${orderId}`,"GET"))
-        .then((response) => {
-            data = response.data;
-        }).catch((error) => {
-        console.log(error);
-    }).then(() => {
-        if(_callback !== undefined)
-            _callback(data);
-    });
-}
-export function getLocation(orderId,_callback){
-    console.log(orderId);
-    let data;
-    axios.request(getRequestOptions(`/location/${orderId}`,"GET"))
         .then((response) => {
             data = response.data;
         }).catch((error) => {

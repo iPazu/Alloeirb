@@ -11,7 +11,8 @@ export default new Vuex.Store({
       products: 'undefined',
       privilege: 'customer',
       map: '',
-      deliveryTime: '',
+      deliveryTime: 0,
+      coursierLocation: null,
   },
   mutations: {
       setUserID (state,newuser_id) {
@@ -28,6 +29,12 @@ export default new Vuex.Store({
       },
       setMap (state,map) {
           state.map = map;
+      },
+      setCoursierLocation (state,location) {
+          state.coursierLocation = location;
+      },
+      setDeliveryTime (state,time) {
+          state.deliveryTime = time;
       },
 
   },

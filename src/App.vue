@@ -2,7 +2,11 @@
   <div id="app">
 
     <router-view/>
-
+    <div class="footer">
+      <div class="content">
+        <p>A VueJS app created by Alex Laboirie</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -13,7 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100vh;
+  height: 100%;
   background-color: #fffafc;
 }
 .banner{
@@ -27,4 +31,16 @@
 .banner > h1{
   color: white;
 }
+.footer{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  background-color: #2c3e50;
+  color: white;
+  margin-top: 250px;
+
+}
+
 </style>

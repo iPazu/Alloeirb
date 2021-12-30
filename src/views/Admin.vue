@@ -52,7 +52,6 @@ export default {
       console.log(products)
       this.orders = [...products].reverse()
     })
-    this.intervalLocation = setInterval(this.refreshLocation, 5000);
 
 
   },
@@ -63,18 +62,6 @@ export default {
         console.log(products)
         this.orders = [...products].reverse()
       })
-    },
-    refreshLocation(){
-      console.log("Refreshing location")
-      if ("geolocation" in navigator) {
-        console.log("Geoloc activated")
-
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log(position.coords.latitude, position.coords.longitude);
-          order.sendLocation({latitude:position.coords.latitude,longitude:position.coords.longitude});
-        });
-      }
-
     },
     acceptOrder(orderid){
       console.log("Accepting order")
@@ -100,7 +87,6 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.intervalOrders);
-    clearInterval(this.intervalLocation);
   }
 }
 </script>

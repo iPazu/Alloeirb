@@ -22,7 +22,8 @@
       </div>
 
       <div v-if="orderData.status === 'delivering'">
-        <h2>{{orderData.coursier}} livre votre commande</h2>
+        <v-img class="coursierimg" style="margin: auto" :src="require(`../assets/alaboirie.png`)"  width="150px" height="150px"/>
+        <h2 class="mt-2">{{orderData.coursier}} livre votre commande</h2>
         <h3>Suivez en direct la localisation de notre livreur</h3>
       </div>
       <div v-if="orderData.status === 'ranking'">
@@ -49,17 +50,19 @@
 
         <v-btn @click="sendRating" color="primary">Envoyer</v-btn>
       </div>
-    </v-col>
-  </v-row>
-  <v-row>
-    <v-col>
-      <v-btn v-if="orderData.status === 'validation'" x-large color="error" @click="cancelOrder" lass="align-center">Annuler</v-btn>
-    </v-col>
-  </v-row>
 
-  <Map   :position="[orderData.latitude,orderData.longitude]" v-if="orderData.status === 'delivering'"></Map>
+    </v-col>
+  </v-row>
+  <Map   :position="[orderData.longitude,orderData.latitude]" :path="getPath()" v-if="orderData.status === 'delivering'"></Map>
+
+  <v-row v-if="orderData.status === 'validation'">
+    <v-col>
+      <v-btn  x-large color="error" @click="cancelOrder" lass="align-center">Annuler</v-btn>
+    </v-col>
+  </v-row>
 
 </v-app>
+
 </div>
 </template>
 
@@ -84,6 +87,11 @@ export default {
     }
   },
   methods: {
+    getPath(){
+      console.log("from path")
+      console.log(this.orderData.geojsonPath)
+      return this.orderData.geojsonPath
+    },
     cancelOrder() {
       console.log("canceling order")
       order.cancelOrder(this.$route.params.orderid, () => {
@@ -94,6 +102,7 @@ export default {
 
       });
     },
+
     sendRating() {
       console.log("send rating")
       let obj = {ranking: this.rating,message: this.message};
@@ -142,6 +151,7 @@ export default {
         order.getOrder(this.$route.params.orderid, (data) => {
           this.orderData = data;
           console.log(data);
+
         });
     },
   },
@@ -151,9 +161,16 @@ export default {
 
     order.getOrder(orderid, (data) => {
       this.orderData = data;
+      if(data.status === 'delivering'){
+        console.log("update coursier loc")
+        console.log(data.coursierpos)
+        store.commit("setCoursierLocation", [data.coursierpos[0].latitude,data.coursierpos[0].longitude])
+        let esimatedDeliveryTime = Math.floor(data.deliveryTime/60) +2
+        store.commit("setDeliveryTime", esimatedDeliveryTime)
+      }
       console.log(data);
     });
-    this.interval = setInterval(this.fetchOrder, 50000);
+    this.interval = setInterval(this.fetchOrder, 5000);
 
   },
   beforeDestroy() {
@@ -177,5 +194,7 @@ h3{
 .page{
   height: 1000px;
 }
-
+.coursierimg{
+  border-radius: 50%;
+}
 </style>
