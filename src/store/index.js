@@ -36,6 +36,11 @@ export default new Vuex.Store({
       setDeliveryTime (state,time) {
           state.deliveryTime = time;
       },
+      resetProductAmount(state){
+          state.products.map(p => {
+              p.amount = 0
+          })
+      }
 
   },
   getters: {

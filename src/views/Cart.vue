@@ -13,7 +13,7 @@
     </v-col>
     <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
       <div class="checkout-box " >
-        <v-card class=" mt-16" width="500px" height="360px">
+        <v-card class=" mt-16" width="500px" height="400px">
           <v-card-title class="text-h5 flex justify-center">Détails de livraison</v-card-title>
           <v-card-text>
             <v-text-field
@@ -32,7 +32,14 @@
                 hint="Donne nous ton adresse pour qu'on te livre"
                 label="adresse"
             ></v-text-field>
-
+            <v-text-field
+                v-model="postal"
+                :rules="validPostalCode"
+                counter
+                maxlength="5"
+                hint="Donne nous le code postal de ton adresse"
+                label="code postal"
+            ></v-text-field>
             <v-card-title class="flex justify-center">{{$store.getters.getTotalCheckout}} €</v-card-title>
             <v-btn large @click="sendJsonOrder" color="primary">Commander</v-btn>
           </v-card-text>
@@ -54,7 +61,7 @@ export default {
   name: "Cart",
   methods: {
     getJsonOrder(){
-      let obj = {phone: this.phone,adress: this.adresse};
+      let obj = {phone: this.phone,adress: this.adresse+ " " +this.postal};
       const product_id = store.state.products.map(product => {
         return product.id;
       });
@@ -69,7 +76,7 @@ export default {
       return obj;
     },
     checkIfCorrectInput(){
-      return !(isNaN(this.phone) || this.phone.length !== 10 || this.adresse.length > 70);
+      return !(isNaN(this.phone) || this.phone.length !== 10 || this.adresse.length < 10 || this.postal.length !== 5 );
     },
     sendJsonOrder(){
       console.log(this.checkIfCorrectInput())
@@ -79,6 +86,8 @@ export default {
         order.sendOrder(this.getJsonOrder(),(orderid) => {
           console.log(orderid)
           store.commit("setOrderID",orderid.data)
+          store.commit("resetProductAmount")
+
           router.push({ path: `/delivery/${store.state.order_id}`});
         });
       }
@@ -90,7 +99,10 @@ export default {
       adresse: '',
       validPhoneNumber: [v => (v.length === 10 && !isNaN(v)) || 'Entrez un numéro valide'],
       validAdress: [v => v.length > 10 || 'Entrez une adresse valide'],
-      apiKey: 'pk.eyJ1IjoiaXBhenUiLCJhIjoiY2t4b25rYTdoMXprbjJ4cWs4Zjc4Z24waSJ9.maHkMBz8VRxaRZxbfLNfuA'
+      apiKey: 'pk.eyJ1IjoiaXBhenUiLCJhIjoiY2t4b25rYTdoMXprbjJ4cWs4Zjc4Z24waSJ9.maHkMBz8VRxaRZxbfLNfuA',
+      postal: '',
+      validPostalCode: [v => (v.length === 5 && !isNaN(v)) || 'Entrez un numéro valide'],
+
 
     }
   },

@@ -108,10 +108,13 @@ export default {
       let obj = {ranking: this.rating,message: this.message};
       order.setRanking(obj,this.$route.params.orderid, (response) => {
         store.commit("setOrderID", "undefined")
+        store.commit("setDeliveryTime", 0)
+
         console.log("ranking sent")
         console.log(response)
         router.push({name: 'Home'});
         window.location.href = "http://localhost:8080/#/"
+
       });
     },
     getStatusInt() {
@@ -151,7 +154,7 @@ export default {
         order.getOrder(this.$route.params.orderid, (data) => {
           this.orderData = data;
           console.log(data);
-
+          store.commit("setCoursierLocation", [data.coursierpos[0].latitude,data.coursierpos[0].longitude])
         });
     },
   },
@@ -166,7 +169,10 @@ export default {
         console.log(data.coursierpos)
         store.commit("setCoursierLocation", [data.coursierpos[0].latitude,data.coursierpos[0].longitude])
         let esimatedDeliveryTime = Math.floor(data.deliveryTime/60) +2
-        store.commit("setDeliveryTime", esimatedDeliveryTime)
+        if(this.$store.state.deliveryTime <= 0){
+          store.commit("setDeliveryTime", esimatedDeliveryTime)
+
+        }
       }
       console.log(data);
     });

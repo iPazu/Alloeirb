@@ -5,18 +5,14 @@
       <v-divider class="my-9"></v-divider>
 
       <v-row>
-        <v-col sm="8" md="10" offset-md="1"  class="my-15 flex align-center">
-          <v-sheet elevation="2" height="80px" class="mx-3 my-10 d-flex flex-row" color="grey lighten-5" v-for="order in orders " :key="order.orderid">
-            <p class="flex justify-start ml-5 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{order.user_id}}</p>
-            <p class="flex justify-start ml-5  mt-2 pt-3 rounded-lg white elevation-4 number" e>{{order.adresse}}</p>
-            <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{order.total}} €</p>
-            <v-btn class="my-4 mx-3" @click="acceptOrder(order.id)" v-if="order.status === 'validation'" large color="primary">Accepter la commande</v-btn>
-            <v-btn class="my-4 mx-3" @click="selectCoursier(order.id)" v-if="order.status === 'preparing'" large color="primary">Livrer cette commande</v-btn>
-            <v-btn class="my-4 mx-3" @click="delivered(order.id)" v-if="order.status === 'delivering'" large color="secondary">Valider la livraison</v-btn>
-            <v-btn class="my-4 mx-3" v-if="order.status === 'ranking'" large color="secondary">Livrée</v-btn>
-            <v-btn class="my-4 mx-3" v-if="order.status === 'delivered'" large color="secondary">Livrée et notée</v-btn>
+        <v-col sm="8" md="10" offset-md="1"  class="my-15 "  v-for="order in orders " :key="order.orderid" >
 
-          </v-sheet>
+
+          <OrderCard  :delivered="delivered" :select-coursier="selectCoursier" :accept-order="acceptOrder"
+                      :order-data="order"/>
+
+
+
         </v-col>
       </v-row>
     </div>
@@ -27,16 +23,20 @@
 import store from "@/store";
 import router from "@/router";
 import * as order from "@/script/Order";
+import OrderCard from '../components/OrderCard'
 
 
 export default {
   name: "Admin",
+  components:{
+    OrderCard,
+  },
   data(){
     return{
       orders: '',
       intervalOrders: '',
       intervalLocation: '',
-      pusher:''
+      pusher:'',
     }
   },
   created() {
@@ -51,11 +51,13 @@ export default {
     order.fetchOrders((products) => {
       console.log(products)
       this.orders = [...products].reverse()
+
     })
 
 
   },
   methods: {
+
     refreshOrders(){
       console.log("Refreshing orders")
       order.fetchOrders((products) => {
