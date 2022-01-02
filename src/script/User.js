@@ -38,13 +38,6 @@ export async function login(token,ticket){
             })
         }
 
-        if(store.state.order_id === 'undefined'){
-            console.log("order undefined");
-            order.getProducts((products) => {
-                console.log(JSON.stringify(products))
-                store.commit("setProducts",[...products]);
-            })
-        }
         window.location.href = `${process.env.VUE_APP_CLIENT_URL}/#/`
         console.log("redirecting")
 
