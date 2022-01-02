@@ -47,7 +47,7 @@ export async function login(token,ticket){
             })
         }
         router.push({name:'Home'});
-        window.location.href = window.location.href.replace(/login.*/, '')
+            window.location.href = `${process.env.VUE_APP_CLIENT_URL}/#/`
         console.log("redirecting")
 
     })
