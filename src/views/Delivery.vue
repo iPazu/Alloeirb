@@ -154,7 +154,14 @@ export default {
         order.getOrder(this.$route.params.orderid, (data) => {
           this.orderData = data;
           console.log(data);
-          store.commit("setCoursierLocation", [data.coursierpos[0].latitude,data.coursierpos[0].longitude])
+          if(data.status === 'delivering'){
+            store.commit("setCoursierLocation", [data.coursierpos[0].latitude,data.coursierpos[0].longitude])
+            if(this.$store.state.deliveryTime <= 0){
+              let esimatedDeliveryTime = Math.floor(data.deliveryTime/60) +2
+              store.commit("setDeliveryTime", esimatedDeliveryTime)
+
+            }
+          }
         });
     },
   },

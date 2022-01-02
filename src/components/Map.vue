@@ -55,6 +55,7 @@ export default {
       return [latMid,lonMid]
     },
     updateDeliveryTime(){
+
       store.commit("setDeliveryTime", this.$store.state.deliveryTime-1)
       if(this.$store.state.deliveryTime === 0){
         store.commit("setDeliveryTime", this.$store.state.deliveryTime+2)
