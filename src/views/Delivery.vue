@@ -150,7 +150,7 @@ export default {
       }
     },
     fetchOrder() {
-        console.log("refreshing order delivery")
+        console.log("refreshing orderr delivery")
         order.getOrder(this.$route.params.orderid, (data) => {
           this.orderData = data;
           console.log(data);
