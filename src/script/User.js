@@ -46,8 +46,7 @@ export async function login(token,ticket){
                 store.commit("setProducts",[...products]);
             })
         }
-        router.push({name:'Home'});
-            window.location.href = `${process.env.VUE_APP_CLIENT_URL}/#/`
+        window.location.href = `${process.env.VUE_APP_CLIENT_URL}/#/`
         console.log("redirecting")
 
     })
