@@ -30,6 +30,7 @@
 import ProductCard from '../components/ProductCard'
 import store from "@/store";
 import router from "@/router";
+import * as order from "@/script/Order";
 
 export default {
   name: "Order",
