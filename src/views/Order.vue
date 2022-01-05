@@ -30,6 +30,7 @@
 import ProductCard from '../components/ProductCard'
 import store from "@/store";
 import router from "@/router";
+import * as order from "@/script/Order";
 
 export default {
   name: "Order",
@@ -45,6 +46,13 @@ export default {
     if(store.state.order_id !== 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order","")
+    }
+    if(store.state.products === 'undefined'){
+      console.log("products undefined");
+      order.getProducts((products) => {
+        console.log(JSON.stringify(products))
+        store.commit("setProducts",[...products]);
+      })
     }
 
   }
