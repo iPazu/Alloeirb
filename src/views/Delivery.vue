@@ -98,7 +98,7 @@ export default {
         store.commit("setOrderID", "undefined")
 
         router.push({name: 'Home'});
-        window.location.href = "http://localhost:8080/#/"
+        window.location.href = "http://alloeirbclient-fqwb67np1-ipazu.vercel.app/#/"
 
       });
     },
@@ -113,7 +113,7 @@ export default {
         console.log("ranking sent")
         console.log(response)
         router.push({name: 'Home'});
-        window.location.href = "http://localhost:8080/#/"
+        window.location.href = "http://alloeirbclient-fqwb67np1-ipazu.vercel.app/#/"
 
       });
     },
