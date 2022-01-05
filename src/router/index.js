@@ -37,8 +37,8 @@ const routes = [
     component: Admin
   },
   {
-    ///token=:token&ticket=:ticket
-      path: '/login',
+    //
+      path: '/login/token=:token&ticket=:ticket',
     name: 'Login',
     component: Login
   }
