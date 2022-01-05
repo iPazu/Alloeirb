@@ -7,10 +7,15 @@ export async function login(token,ticket){
     let user_id;
     let orderid;
     let privilege;
-    axios.request(getRequestOptions(`/login/${token}/${ticket}`,"GET"))
+    axios.request({
+        method: "GET",
+        url: `${process.env.VUE_APP_API_URL}/api` + `/login/${token}/${ticket}`,
+        withCredentials: true,
+    })
         .then((response) => {
             console.log("from axios : "+ response.data);
             console.log(response.data)
+            localStorage.setItem('accessToken', response.data.accessToken);
             user_id = response.data.user_id;
             orderid = response.data.orderid;
             privilege = response.data.privilege;
@@ -64,6 +69,9 @@ export async function getUserId(_callback){
 
 export function getRequestOptions(path,method){
     return {
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken")
+        },
         method: method,
         url: `${process.env.VUE_APP_API_URL}/api` + path,
         withCredentials: true,

@@ -6,13 +6,23 @@ import {getRequestOptions} from "@/script/User";
 
 export function sendOrder(jsonObject,_then){
     console.log(jsonObject)
-    axios.post(`${process.env.VUE_APP_API_URL}/api/order`, jsonObject,{ withCredentials: true })
+    console.log("sending order")
+    jsonObject['accessToken'] = localStorage.getItem("accessToken")
+    axios.post(`${process.env.VUE_APP_API_URL}/api/order`, jsonObject,
+        { headers: {
+            Authorization: "Bearer " + localStorage.getItem("accessToken")
+        },
+        withCredentials: true })
         .then(response => _then(response));
 }
 
 export function setRanking(jsonObject,orderId,_then){
     console.log(jsonObject)
-    axios.post(`${process.env.VUE_APP_API_URL}/api/order/ranking/${orderId}`, jsonObject,{ withCredentials: true })
+    jsonObject['accessToken'] = localStorage.getItem("accessToken")
+    axios.post(`${process.env.VUE_APP_API_URL}/api/order/ranking/${orderId}`, jsonObject,{ headers: {
+        Authorization: "Bearer " + localStorage.getItem("accessToken")
+    },
+        withCredentials: true })
         .then(response => _then(response));
 }
 export function getOrder(orderId,_callback){

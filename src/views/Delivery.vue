@@ -98,7 +98,7 @@ export default {
         store.commit("setOrderID", "undefined")
 
         router.push({name: 'Home'});
-        window.location.href = "https://alloeirbclient.vercel.app/#/"
+        window.location.href = "http://localhost:8080/#/"
 
       });
     },
@@ -113,7 +113,7 @@ export default {
         console.log("ranking sent")
         console.log(response)
         router.push({name: 'Home'});
-        window.location.href = "https://alloeirbclient.vercel.app/#/"
+        window.location.href = "http://localhost:8080/#/"
 
       });
     },
