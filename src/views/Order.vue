@@ -47,10 +47,10 @@ export default {
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order","")
     }
-      order.getProducts((products) => {
-        console.log(JSON.stringify(products))
-        store.commit("setProducts",[...products]);
-      })
+    order.getProducts((products) => {
+      console.log(JSON.stringify(products))
+      store.commit("setProducts",[...products]);
+    })
   }
 }
 </script>
