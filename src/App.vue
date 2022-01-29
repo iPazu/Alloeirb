@@ -4,7 +4,7 @@
     <router-view/>
     <div class="footer">
       <div class="content">
-        <p>A VueJS app created by Alex Laboirie</p>
+        <p>A VueJS/NodeJS app created by Alex Laboirie</p>
       </div>
     </div>
   </div>
@@ -12,14 +12,17 @@
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: ROMANUS, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   height: 100%;
   background-color: #fffafc;
+  background-image: url("./assets/pyramid_background.png");
+  background-size: cover;
 }
+
 .banner{
   display: flex;
   align-items: center;
@@ -39,7 +42,6 @@
   height: 100px;
   background-color: #2c3e50;
   color: white;
-  margin-top: 250px;
 
 }
 

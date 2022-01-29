@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-app>
-      <v-card elevation="2" sm-height :height="height" class="mx-3 my-10 " color="grey lighten-5" @click="show = !show" >
+      <v-card elevation="2" sm-height :height="height()" class="mx-3 my-10 " color="grey lighten-5" @click="show = !show" >
         <div class="header d-flex flex-row flex-wrap">
 
 
@@ -23,10 +23,9 @@
                 <p  class="black--text mx-8"  >
                   {{index}} : {{p}}
                 </p>
-
               </div>
-
-              </v-card>
+              <v-btn class="my-4 mx-3" @click="cancelOrder" large color="error">Annuler la commande</v-btn>
+            </v-card>
 
           </div>
         </v-expand-transition>
@@ -38,6 +37,9 @@
 </template>
 
 <script>
+import * as order from "@/script/Order";
+
+
 export default {
   name: "OrderCard",
 
@@ -65,11 +67,21 @@ export default {
         case 'xl': return 80
       }
     },
+    cancelOrder() {
+      console.log("canceling order")
+      order.cancelOrder(this.orderData.id, () => {
+        location.reload()
+      });
   },
+  },
+
   created() {
     console.log(this.orderData)
+    console.log("eee")
+    console.log(this.orderData.products)
     this.productData = JSON.parse(this.orderData.products)
   }
+
 }
 </script>
 

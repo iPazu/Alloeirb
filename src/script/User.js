@@ -1,6 +1,5 @@
 import axios from "axios";
 import store from '../store/index'
-import * as order from "@/script/Order";
 
 
 export async function login(token,ticket){
@@ -16,6 +15,14 @@ export async function login(token,ticket){
             console.log("from axios : "+ response.data);
             console.log(response.data)
             localStorage.setItem('accessToken', response.data.accessToken);
+            if(Object.keys(response.data.codeObject).length !== 0){
+                for (let key of Object.keys(response.data.codeObject)) {
+                    let obj = {}
+                    obj[key] = response.data.codeObject[key]
+                    store.commit("addCode",obj);
+                }
+
+            }
             user_id = response.data.user_id;
             orderid = response.data.orderid;
             privilege = response.data.privilege;
@@ -35,13 +42,7 @@ export async function login(token,ticket){
         else
             store.commit("setOrderID",orderid);
 
-        if(store.state.products === 'undefined'){
-            console.log("products undefined");
-            order.getProducts((products) => {
-                console.log(JSON.stringify(products))
-                store.commit("setProducts",[...products]);
-            })
-        }
+
 
         window.location.href = `${process.env.VUE_APP_CLIENT_URL}/#/`
         console.log("redirecting")
@@ -63,9 +64,24 @@ export async function getUserId(_callback){
         if(_callback !== undefined)
             _callback(user_id);
     });
-
 }
-
+export async function addCode(code,_callback){
+    let status = undefined;
+    console.log("sending code")
+    console.log(code)
+    axios.request(getRequestOptions(`/user/code/${code}`,"GET"))
+        .then((response) => {
+            status = response.status;
+            console.log("request status"+status);
+            console.log(response.data)
+            store.commit("addCode",response.data);
+            }).catch((error) => {
+        status = error.response.status
+    }).then(() => {
+        if(_callback !== undefined)
+            _callback(status);
+    });
+}
 
 export function getRequestOptions(path,method){
     return {

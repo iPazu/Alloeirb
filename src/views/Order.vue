@@ -4,7 +4,7 @@
     <v-container class="mx">
       <v-row>
         <v-col>
-          <h1 class="text-h3" style="margin-bottom: 25px">Choissisez votre commande</h1>
+          <h1  style="margin-bottom: 25px">Choissisez votre commande</h1>
           <v-divider style="margin-bottom: 20px"></v-divider>
 
         </v-col>
@@ -47,19 +47,16 @@ export default {
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order","")
     }
-    if(store.state.products === 'undefined'){
-      console.log("products undefined");
       order.getProducts((products) => {
         console.log(JSON.stringify(products))
         store.commit("setProducts",[...products]);
       })
-    }
-
   }
 }
 </script>
 
 <style scoped>
+
 .command-button{
   margin-top: 60px;
 

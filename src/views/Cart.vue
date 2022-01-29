@@ -1,19 +1,20 @@
 <template>
 <div>
   <v-app>
-    <h1 class="checkout-title text-h3">Votre panier</h1>
+
+    <h1 class="checkout-title ">Votre panier</h1>
     <v-row>
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
-    <v-sheet elevation="2" height="80px" class="mx-3 my-10 d-flex flex-row" color="grey lighten-5" v-for="product in $store.state.products" :key="product.id">
+    <v-sheet   rounded="xl" elevation="6" height="80px" class="mx-3 my-10 d-flex flex-row" color="blue lighten-5" v-for="product in $store.state.products" :key="product.id">
         <v-img class="ml-3 mt-4" :src="require(`../assets/${product.icon_url}`)" max-width="50px" max-height="50px"/>
        <p class="flex justify-start ml-5 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{product.amount}}</p>
       <p class="flex justify-start ml-2 text-center">{{ product.display_name}}</p>
-      <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{product.amount*product.unit_price}} €</p>
+      <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{Math.round(product.amount*product.unit_price * 100) / 100 }} €</p>
     </v-sheet>
     </v-col>
     <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
       <div class="checkout-box " >
-        <v-card class=" mt-16" width="500px" height="400px">
+        <v-card class=" mt-16" width="500px" height="400px" elevation="6" color="blue lighten-5">
           <v-card-title class="text-h5 flex justify-center">Détails de livraison</v-card-title>
           <v-card-text>
             <v-text-field
@@ -40,7 +41,14 @@
                 hint="Donne nous le code postal de ton adresse"
                 label="code postal"
             ></v-text-field>
-            <v-card-title class="flex justify-center">{{$store.getters.getTotalCheckout}} €</v-card-title>
+
+            <v-card-title class="flex justify-center pt-0">
+<span v-if="oldpricestriked" class="oldprice">{{Math.round($store.getters.getTotalCheckout * 100) / 100 +"€"}}</span>
+             <p class="pb-2 pr-2">→ </p>
+
+              {{  getTotalString()}}
+            </v-card-title>
+
             <v-btn large @click="sendJsonOrder" color="primary">Commander</v-btn>
           </v-card-text>
         </v-card>
@@ -91,6 +99,19 @@ export default {
           router.push({ path: `/delivery/${store.state.order_id}`});
         });
       }
+    },
+    getTotalString(){
+      let promotion = store.getters.getPromotion
+      let total =  Math.round(store.getters.getTotalCheckout * 100) / 100
+
+      if(promotion > 0){
+        this.oldpricestriked = true
+        console.log("promotion" +promotion)
+       let newtotal = total - total*(promotion/100)
+        return newtotal + " €"
+      }
+     return total + " €"
+
     }
   },
   data(){
@@ -101,6 +122,7 @@ export default {
       validAdress: [v => v.length > 10 || 'Entrez une adresse valide'],
       apiKey: 'pk.eyJ1IjoiaXBhenUiLCJhIjoiY2t4b25rYTdoMXprbjJ4cWs4Zjc4Z24waSJ9.maHkMBz8VRxaRZxbfLNfuA',
       postal: '',
+      oldpricestriked: false,
       validPostalCode: [v => (v.length === 5 && !isNaN(v)) || 'Entrez un numéro valide'],
 
 
@@ -122,6 +144,12 @@ export default {
 </script>
 
 <style scoped>
+.oldprice{
+  color: red;
+  text-decoration: line-through;
+  opacity: 60%;
+  padding-right: 10px;
+}
   .checkout-title{
     padding-top: 50px;
   }

@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import Cart from "@/views/Cart";
 import Delivery from "@/views/Delivery";
 import Admin from "@/views/Admin";
+import Rewards from "@/views/Rewards";
 
 
 Vue.use(VueRouter)
@@ -37,8 +38,13 @@ const routes = [
     component: Admin
   },
   {
-    //
-      path: '/login/token=:token&ticket=:ticket',
+    path: '/rewards',
+    name: 'Rewards',
+    component: Rewards
+  },
+  {
+    ///token=:token&ticket=:ticket
+      path: '/login',
     name: 'Login',
     component: Login
   }

@@ -92,13 +92,19 @@ export default {
       console.log(this.orderData.geojsonPath)
       return this.orderData.geojsonPath
     },
-    cancelOrder() {
+    orderCanceled() {
+      store.commit("setOrderID", "undefined")
+      router.push({name: 'Home'});
+      window.location.href = "http://localhost:8080"
+    },
+      cancelOrder() {
       console.log("canceling order")
       order.cancelOrder(this.$route.params.orderid, () => {
         store.commit("setOrderID", "undefined")
 
         router.push({name: 'Home'});
-        window.location.href = "https://alloeirbclient-fqwb67np1-ipazu.vercel.app/#/"
+        window.location.href = "http://localhost:8080"
+
 
       });
     },
@@ -113,8 +119,7 @@ export default {
         console.log("ranking sent")
         console.log(response)
         router.push({name: 'Home'});
-        window.location.href = "https://alloeirbclient-fqwb67np1-ipazu.vercel.app/#/"
-
+        window.location.href = "http://localhost:8080"
       });
     },
     getStatusInt() {
@@ -154,6 +159,9 @@ export default {
         order.getOrder(this.$route.params.orderid, (data) => {
           this.orderData = data;
           console.log(data);
+          if(data.status === 'canceled'){
+            this.orderCanceled();
+          }
           if(data.status === 'delivering'){
             store.commit("setCoursierLocation", [data.coursierpos[0].latitude,data.coursierpos[0].longitude])
             if(this.$store.state.deliveryTime <= 0){
@@ -171,6 +179,9 @@ export default {
 
     order.getOrder(orderid, (data) => {
       this.orderData = data;
+      if(data.status === 'canceled'){
+        this.orderCanceled();
+      }
       if(data.status === 'delivering'){
         console.log("update coursier loc")
         console.log(data.coursierpos)
@@ -193,6 +204,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 h1{
   font-weight: bold;
   font-size: xxx-large;

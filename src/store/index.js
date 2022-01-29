@@ -11,6 +11,7 @@ export default new Vuex.Store({
       products: 'undefined',
       privilege: 'customer',
       map: '',
+      codes: [],
       deliveryTime: 0,
       coursierLocation: null,
   },
@@ -36,6 +37,14 @@ export default new Vuex.Store({
       setDeliveryTime (state,time) {
           state.deliveryTime = time;
       },
+      addCode (state,code) {
+          console.log("adding code")
+          console.log(code)
+          alert(code)
+
+          state.codes.push(code)
+      },
+
       resetProductAmount(state){
           state.products.map(p => {
               p.amount = 0
@@ -50,7 +59,18 @@ export default new Vuex.Store({
                 total += product.amount*product.unit_price;
             })
             return total;
-        }
+        },
+      getPromotion: state => {
+          let promotion = 0
+          state.codes.map((c) => {
+              let cp = Object.values(c)[0]
+              if(cp > promotion){
+                  promotion = cp
+              }
+          })
+          console.log(promotion)
+          return promotion
+      },
   },
   actions: {
   },
