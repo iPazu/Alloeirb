@@ -40,7 +40,6 @@ export default new Vuex.Store({
       addCode (state,code) {
           console.log("adding code")
           console.log(code)
-          alert(code)
 
           state.codes.push(code)
       },
