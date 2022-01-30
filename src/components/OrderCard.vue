@@ -1,6 +1,5 @@
 <template>
   <div>
-    <v-app>
       <v-card elevation="2" sm-height :height="height()" class="mx-3 my-10 " color="grey lighten-5" @click="show = !show" >
         <div class="header d-flex flex-row flex-wrap">
 
@@ -31,7 +30,6 @@
           </div>
         </v-expand-transition>
       </v-card>
-    </v-app>
   </div>
 
 
