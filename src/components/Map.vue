@@ -26,13 +26,16 @@ export default {
       intervalLocation: null,
       intervalTime: null,
       coursierMarker: null,
+      geoJsonPath: null,
     };
   },
   methods: {
     refreshLocation(){
       console.log("Refreshing location")
+      console.log(this.geoJsonPath[0])
         let location = this.$store.state.coursierLocation
         console.log(location)
+
         this.coursierMarker.setLngLat([location[1], location[0] ])
 
     },
@@ -64,6 +67,7 @@ export default {
     },
   },
   mounted() {
+    this.geoJsonPath = [...this.path]
     mapboxgl.accessToken = this.accessToken;
     console.log(this.position)
     let location = this.$store.state.coursierLocation
@@ -98,7 +102,7 @@ export default {
           'properties': {},
           'geometry': {
             'type': 'LineString',
-            'coordinates':  [...this.path]
+            'coordinates':  this.geoJsonPath
           }
         }
       });
