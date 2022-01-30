@@ -11,6 +11,10 @@
 </template>
 
 <style lang="scss">
+@font-face {
+  font-family: "ROMANUS";
+  src: url("./assets/romanus.otf") format("opentype")
+}
 #app {
   font-family: ROMANUS, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

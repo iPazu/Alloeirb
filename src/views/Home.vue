@@ -12,7 +12,6 @@
         <v-btn color="light-blue" v-if="$store.state.privilege === 'coursier' ||$store.state.privilege === 'admin'"
                x-large @click="$router.push({ path: `/admin/`})" class="command-button mt-5 mx-8">Pannel administrateur</v-btn>
 
-
     </div>
 
     <div class="message">
@@ -30,10 +29,10 @@
         <v-btn color="primary"  x-large @click="$router.push({ path: `/delivery/${$store.state.order_id}`})" class="command-button mt-5">Voir la commande</v-btn>
       </div>
       <div>
-
-      </div>
       <v-btn  color="error" v-if="$store.state.user_id !== 'undefined'"
                @click="disconnect" class="command-button mt-5 mx-8 disconect">Se déconnecter</v-btn>
+      </div>
+
     </div>
 
   </v-app>
@@ -69,7 +68,7 @@ export default {
       if(uid === 'undefined') {
         console.log("user not defined attempting cas auth")
             //window.location.href = process.env.CLIENT_URL + "/#/login";
-            window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirect?token=local";
+            window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirectprod?token=local";
       }
       if(store.state.user_id === 'undefined'){
         store.commit("setUserID",uid);

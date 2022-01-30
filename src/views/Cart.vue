@@ -147,7 +147,6 @@ export default {
 .oldprice{
   color: red;
   text-decoration: line-through;
-  opacity: 60%;
   padding-right: 10px;
 }
   .checkout-title{
