@@ -17,7 +17,7 @@
       <div v-if="orderData.status === 'preparing'">
         <h2 class="delivery_subtitle">Votre commande est dans nos fourneaux</h2>
         <h3 class="delivery_desc">Nous allons vous trouver un coursier dés que possible</h3>
-        <img src="../assets/cooking.gif" alt="cooking gif"  width="500" />
+        <img src="../assets/cooking.gif" alt="cooking gif" class="cooking-gif"  width="500" />
 
       </div>
 
@@ -221,5 +221,11 @@ export default {
 }
 .coursierimg{
   border-radius: 50%;
+}
+.cooking-gif{
+  @media only screen and (max-width: 767px) {
+    width: 60%;
+    height: 60%;
+  }
 }
 </style>
