@@ -95,7 +95,7 @@ export default {
     orderCanceled() {
       store.commit("setOrderID", "undefined")
       router.push({name: 'Home'});
-      window.location.href = "http://localhost:8080"
+      window.location.href = "https://alloeirb.fr"
     },
       cancelOrder() {
       console.log("canceling order")
@@ -103,7 +103,7 @@ export default {
         store.commit("setOrderID", "undefined")
 
         router.push({name: 'Home'});
-        window.location.href = "http://localhost:8080"
+        window.location.href = "https://alloeirb.fr"
 
 
       });
@@ -119,7 +119,7 @@ export default {
         console.log("ranking sent")
         console.log(response)
         router.push({name: 'Home'});
-        window.location.href = "http://localhost:8080"
+        window.location.href = "https://alloeirb.fr"
       });
     },
     getStatusInt() {

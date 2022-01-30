@@ -54,7 +54,7 @@ export default {
     sendCode() {
       if (this.code !== "") {
         console.log("sending code")
-        user.addCode(this.code, (status) => {
+        user.addCode(this.code.toLowerCase(), (status) => {
           console.log(status)
           this.alertVisible = true
           if (status === 200) {
