@@ -40,12 +40,16 @@ export default {
   data() {
     return {
       validNumber: [v =>  !isNaN(v) || 'Entrez un nombre valide'],
+
     };
   },
   methods: {
     editNumber: function(n) {
+      if(this.productData.unit_price === 0 && this.productData.amount >= 1){
+        return;
+      }
       if(parseInt(this.productData.amount) === 0 && n === -1){
-        return
+        return;
       }
         this.productData.amount = parseInt(this.productData.amount) +n;
         console.log(this.productData.amount)
