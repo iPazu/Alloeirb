@@ -43,6 +43,7 @@
         <div>
           <v-textarea
               class="mx-16 my-4"
+              background-color="blue lighten-5"
               outlined
               name="rating-message"
               label="Laissez nous un petit message"

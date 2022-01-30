@@ -18,8 +18,8 @@
       </v-row>
       <v-row>
         <v-col>
-          <v-btn color="primary" v-if="!error" @click="goToCart" x-large class="command-button" >Voir le panier</v-btn>
-          <v-btn color="error" v-if="error" @click="goToCart" x-large class="command-button" >Voir le panier</v-btn>
+          <v-btn color="primary" v-if="!error" @click="goToCart" x-large class="command-button mb-3" >Voir le panier</v-btn>
+          <v-btn color="error" v-if="error" @click="goToCart" x-large class="command-button mb-3" >Voir le panier</v-btn>
 
         </v-col>
       </v-row>
