@@ -54,7 +54,6 @@
     </v-col>
   </v-row>
   <Map   :position="[orderData.longitude,orderData.latitude]" :path="getPath()" v-if="orderData.status === 'delivering'"></Map>
-  <h1>TESTTJRZNJNILNZFOAO</h1>
   <v-row v-if="orderData.status === 'validation'">
     <v-col>
       <v-btn  x-large color="error" @click="cancelOrder" lass="align-center">Annuler</v-btn>
@@ -217,7 +216,7 @@ export default {
   opacity: 0.8;
 }
 .page{
-  height: 1000px;
+  height: 1300px;
 }
 .coursierimg{
   border-radius: 50%;
