@@ -212,9 +212,15 @@ export default {
 
 <style lang="scss">
 .gif_surround{
-  opacity: 30%;
+  margin: auto;
+  width: 500px;
   background-color: #e39e12;
   border-radius: 30px;
+}
+.gif_surround:before{
+  filter        : blur(10px);
+
+
 }
 .delivery_title{
   font-weight: bold;
