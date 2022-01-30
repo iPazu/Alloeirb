@@ -23,7 +23,7 @@
   color: #2c3e50;
   height: 100% ;
   background-color: #fffafc;
-  background-image: url("./assets/pyramid_background.png");
+  background-image: url("./assets/pyramid_background.jpg");
   background-size: cover;
 }
 
