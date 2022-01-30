@@ -130,9 +130,6 @@ export default {
 
 <style scoped>
 
-.mapboxgl-map{
-  margin-bottom: 100px;
-}
 .mapview{
   display: flex;
   align-items: center;
