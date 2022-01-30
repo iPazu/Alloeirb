@@ -42,7 +42,7 @@
           <v-textarea
               class="mx-16 my-4"
               outlined
-              name="input-7-4"
+              name="rating-message"
               label="Laissez nous un petit message"
               v-model="message"
           ></v-textarea>

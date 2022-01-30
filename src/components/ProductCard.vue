@@ -17,12 +17,12 @@
           <v-row style="justify-content: center">
             <v-col cols="6"   >
               <v-text-field
-
+                  :rules="validNumber"
                 filled
                 rounded
                 dense
+                  maxlength="2"
                 v-model="productData.amount"
-                type="number"
 
             ></v-text-field></v-col>
           </v-row>
@@ -39,12 +39,16 @@ export default {
   },
   data() {
     return {
+      validNumber: [v =>  !isNaN(v) || 'Entrez un nombre valide'],
     };
   },
   methods: {
     editNumber: function(n) {
-      this.productData.amount = parseInt(this.productData.amount) +n;
-      console.log(this.productData.amount)
+      if(parseInt(this.productData.amount) === 0 && n === -1){
+        return
+      }
+        this.productData.amount = parseInt(this.productData.amount) +n;
+        console.log(this.productData.amount)
     }
   }
 }
