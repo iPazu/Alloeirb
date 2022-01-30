@@ -48,13 +48,13 @@ export default {
   ,
   methods: {
     goToCart: function () {
-      store.state.products.map((p) => {
+      store.state.products.map((p,index) => {
         if(isNaN(p.amount)){
           this.error = true;
           scroll(0,0)
         }
-        else if (!p.amount > 1) {
-          p.amount = 1
+        else if (!p.amount > 1 && p.unit_price === 0) {
+          store.state.products[index].amount = 1
         }
       })
       if(!this.error){
