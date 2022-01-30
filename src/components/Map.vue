@@ -32,13 +32,13 @@ export default {
   methods: {
     refreshLocation(){
       console.log("Refreshing location")
-      console.log(this.geoJsonPath[0])
-      this.geoJsonPath.splice(0,1);
+      console.log(this.path[0])
+      this.path.splice(0,1);
         let location = this.$store.state.coursierLocation
         console.log(location)
 
         this.coursierMarker.setLngLat([location[1], location[0] ])
-        this.map.getSource('route').setData(this.geoJsonPath);
+        this.map.getSource('route').setData(this.path);
 
     },
     getMiddle(lat1,lat2,lon1,lon2){
