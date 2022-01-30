@@ -9,9 +9,8 @@
           <p style="font-weight: bold" class="price">{{productData.unit_price }} €</p>
           <p style="padding-bottom: 5px">Combien en veux-tu</p>
           <v-chip-group style="padding-bottom: 10px">
-            <v-chip @click="editNumber(1)" outlined> 1</v-chip>
-            <v-chip @click="editNumber(5)" outlined> 5</v-chip>
-            <v-chip @click="editNumber(20)" outlined> 20</v-chip>
+            <v-chip @click="editNumber(-1)" outlined> -</v-chip>
+            <v-chip @click="editNumber(1)" outlined> +</v-chip>
           </v-chip-group>
           <v-divider style="padding-bottom: 20px"></v-divider>
 
@@ -44,7 +43,7 @@ export default {
   },
   methods: {
     editNumber: function(n) {
-      this.productData.amount += n;
+      this.productData.amount = parseInt(this.productData.amount) +n;
       console.log(this.productData.amount)
     }
   }
