@@ -98,6 +98,9 @@ export default {
     sendJsonOrder(){
       console.log(this.checkIfCorrectInput())
       console.log(this.getJsonOrder())
+      if(parseInt(this.getTotalString().replace(' €','')) === 0){
+        return
+      }
       if(this.checkIfCorrectInput()){
         console.log("sending json order");
         order.sendOrder(this.getJsonOrder(),(orderid) => {
