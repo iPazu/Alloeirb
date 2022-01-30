@@ -11,8 +11,7 @@
 
         <v-btn color="light-blue" v-if="$store.state.privilege === 'coursier' ||$store.state.privilege === 'admin'"
                x-large @click="$router.push({ path: `/admin/`})" class="command-button mt-5 mx-8">Pannel administrateur</v-btn>
-      <v-btn color="error" v-if="$store.state.user_id !== 'undefined'"
-             x-large @click="disconnect" class="command-button mt-5 mx-8">Se déconnecter</v-btn>
+
 
     </div>
 
@@ -33,9 +32,13 @@
       <div>
 
       </div>
-
+      <v-btn  color="error" v-if="$store.state.user_id !== 'undefined'"
+               @click="disconnect" class="command-button mt-5 mx-8 disconect">Se déconnecter</v-btn>
     </div>
+
   </v-app>
+
+
   </div>
 
 </template>

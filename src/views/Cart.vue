@@ -42,7 +42,7 @@
                 label="code postal"
             ></v-text-field>
 
-            <v-card-title class="flex justify-center pt-0">
+            <v-card-title class="flex justify-center pt-0 pb-0">
 <span v-if="oldpricestriked" class="oldprice">{{Math.round($store.getters.getTotalCheckout * 100) / 100 +"€"}}</span>
              <p class="pb-2 pr-2">→ </p>
 
