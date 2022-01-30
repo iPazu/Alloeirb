@@ -13,6 +13,8 @@
       <div v-if="orderData.status === 'validation'">
         <h2 class="delivery_subtitle">Votre commande est en attente de validation</h2>
         <h3 class="delivery_desc">Nous allons vous trouver un coursier dés que possible</h3>
+        <img src="../assets/camel_running.gif" alt="camel gif" class="cooking-gif"  width="500" />
+
       </div>
       <div v-if="orderData.status === 'preparing'">
         <h2 class="delivery_subtitle">Votre commande est dans nos fourneaux</h2>
