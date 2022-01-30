@@ -24,7 +24,7 @@
                   {{index}} : {{p}}
                 </p>
               </div>
-              <p>{{productData.description}}</p>
+              <p>{{orderData.description}}</p>
               <v-btn class="my-4 mx-3" @click="cancelOrder" large color="error">Annuler la commande</v-btn>
             </v-card>
 
