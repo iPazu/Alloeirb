@@ -33,6 +33,7 @@ export default {
     refreshLocation(){
       console.log("Refreshing location")
       console.log(this.geoJsonPath[0])
+      this.geoJsonPath.splice(0,1);
         let location = this.$store.state.coursierLocation
         console.log(location)
 
