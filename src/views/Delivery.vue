@@ -50,7 +50,7 @@
 
         <v-btn @click="sendRating" color="primary">Envoyer</v-btn>
       </div>
-      <Map   :position="[orderData.longitude,orderData.latitude]" :path="getPath()" v-if="orderData.status === 'delivering'"></Map>
+      <Map  class="mt-10" :position="[orderData.longitude,orderData.latitude]" :path="getPath()" v-if="orderData.status === 'delivering'"></Map>
       <h3 v-if="orderData.status === 'delivering'">Ils sont beau nos liveurs non ?</h3>
     </v-col>
   </v-row>
@@ -218,7 +218,7 @@ export default {
   opacity: 0.8;
 }
 .page{
-  height: 1300px;
+  height: 1150px;
 }
 .coursierimg{
   border-radius: 50%;
