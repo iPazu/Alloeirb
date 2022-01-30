@@ -51,7 +51,7 @@
         <v-btn @click="sendRating" color="primary">Envoyer</v-btn>
       </div>
       <Map  class="mt-10" :position="[orderData.longitude,orderData.latitude]" :path="getPath()" v-if="orderData.status === 'delivering'"></Map>
-      <h3 v-if="orderData.status === 'delivering'">Ils sont beau nos liveurs non ?</h3>
+      <h3 class="pt-6" v-if="orderData.status === 'delivering'">Ils sont beau nos liveurs non ?</h3>
     </v-col>
   </v-row>
 
