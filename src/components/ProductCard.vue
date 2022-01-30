@@ -1,6 +1,6 @@
 <template>
   <div class="product-card">
-        <v-card width="500px" elevation="1"  color="blue lighten-5" outlined>
+        <v-card width="500px" elevation="6" rounded="xl"  color="blue lighten-5" outlined>
 
           <v-card-title  class="flex justify-center" >{{productData.display_name.toString()}}</v-card-title>
           <v-divider style="padding-bottom: 20px"></v-divider>
