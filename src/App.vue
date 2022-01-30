@@ -21,7 +21,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100%;
+  height: 100% ;
   background-color: #fffafc;
   background-image: url("./assets/pyramid_background.png");
   background-size: cover;
@@ -40,10 +40,15 @@
 }
 .footer{
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
+  position:absolute;
+
+  bottom:-80;
+
+  width:100%;
+
+  padding-top:35px;
+
+  height: 80px;
   background-color: #2c3e50;
   color: white;
 

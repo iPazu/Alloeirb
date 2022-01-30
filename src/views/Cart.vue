@@ -99,8 +99,11 @@ export default {
       console.log(this.checkIfCorrectInput())
       console.log(this.getJsonOrder())
       if(parseInt(this.getTotalString().replace(' €','')) === 0){
+        console.log("Aborting command")
         return
       }
+      else{
+
       if(this.checkIfCorrectInput()){
         console.log("sending json order");
         order.sendOrder(this.getJsonOrder(),(orderid) => {
@@ -110,6 +113,7 @@ export default {
 
           router.push({ path: `/delivery/${store.state.order_id}`});
         });
+      }
       }
     },
     getTotalString(){
