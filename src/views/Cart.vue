@@ -7,14 +7,15 @@
 
     <v-row>
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
-    <v-sheet   rounded="xl" elevation="6" height="80px" class="mx-3 my-10 d-flex flex-row" color="blue lighten-5" v-for="product in $store.state.products" :key="product.id">
-        <div v-if="product.amount !== 0">
-      <v-img class="ml-3 mt-4" :src="require(`../assets/${product.icon_url}`)" max-width="50px" max-height="50px"/>
-       <p class="flex justify-start ml-5 mt-4 pt-3 rounded-lg white elevation-4 number" e>{{product.amount}}</p>
-      <p class="flex justify-start ml-2 text-center mt-7">{{ product.display_name}}</p>
-      <p class="flex justify-start mx-7 mt-4 pt-3 rounded-lg white elevation-4 number" e>{{Math.round(product.amount*product.unit_price * 100) / 100 }} €</p>
-        </div>
-    </v-sheet>
+      <div v-for="product in $store.state.products" :key="product.id">
+        <v-sheet   rounded="xl" elevation="6" height="80px" class="mx-3 my-10 d-flex flex-row" color="blue lighten-5" v-if="product.amount !== 0" >
+          <v-img class="ml-3 mt-4" :src="require(`../assets/${product.icon_url}`)" max-width="50px" max-height="50px"/>
+          <p class="flex justify-start ml-5 mt-4 pt-3 rounded-lg white elevation-4 number" e>{{product.amount}}</p>
+          <p class="flex justify-start ml-2 text-center mt-7">{{ product.display_name}}</p>
+          <p class="flex justify-start mx-7 mt-4 pt-3 rounded-lg white elevation-4 number" e>{{Math.round(product.amount*product.unit_price * 100) / 100 }} €</p>
+        </v-sheet>
+      </div>
+
     </v-col>
     <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
       <v-textarea class="mt-10" background-color="blue lighten-5"
