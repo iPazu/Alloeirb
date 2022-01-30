@@ -66,7 +66,7 @@ export default {
       if(uid === 'undefined') {
         console.log("user not defined attempting cas auth")
             //window.location.href = process.env.CLIENT_URL + "/#/login";
-            window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirect_prod?token=local";
+            window.location.href = "https://cas.bordeaux-inp.fr/login?service=https://alaboirie.vvv.enseirb-matmeca.fr/redirectprod?token=local";
       }
       if(store.state.user_id === 'undefined'){
         store.commit("setUserID",uid);
