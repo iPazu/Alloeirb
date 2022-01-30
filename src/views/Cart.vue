@@ -2,16 +2,16 @@
 <div>
   <v-app>
 
-    <h1 class="checkout-title ">Votre panier</h1>
+    <h1 class="checkout-title mb-6">Votre panier</h1>
     <v-divider style="margin-bottom: 20px"></v-divider>
 
     <v-row>
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
     <v-sheet   rounded="xl" elevation="6" height="80px" class="mx-3 my-10 d-flex flex-row" color="blue lighten-5" v-for="product in $store.state.products" :key="product.id">
         <v-img class="ml-3 mt-4" :src="require(`../assets/${product.icon_url}`)" max-width="50px" max-height="50px"/>
-       <p class="flex justify-start ml-5 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{product.amount}}</p>
-      <p class="flex justify-start ml-2 text-center">{{ product.display_name}}</p>
-      <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" e>{{Math.round(product.amount*product.unit_price * 100) / 100 }} €</p>
+       <p class="flex justify-start ml-5 mt-4 pt-3 rounded-lg white elevation-4 number" e>{{product.amount}}</p>
+      <p class="flex justify-start ml-2 text-center mt-7">{{ product.display_name}}</p>
+      <p class="flex justify-start mx-7 mt-4 pt-3 rounded-lg white elevation-4 number" e>{{Math.round(product.amount*product.unit_price * 100) / 100 }} €</p>
     </v-sheet>
     </v-col>
     <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
@@ -23,7 +23,7 @@
                   v-model="description"
       ></v-textarea>
       <div class="checkout-box " >
-        <v-card class=" mt-5" width="500px" height="400px" elevation="6" color="blue lighten-5">
+        <v-card class=" mt-5 mb-4" width="500px" height="400px" elevation="6" color="blue lighten-5">
           <v-card-title class="flex justify-center">Détails de livraison</v-card-title>
           <v-card-text>
             <v-text-field
