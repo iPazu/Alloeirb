@@ -53,6 +53,9 @@ export default {
           this.error = true;
           scroll(0,0)
         }
+        else if (!p.amount > 1) {
+          p.amount = 1
+        }
       })
       if(!this.error){
         router.push('order/cart')

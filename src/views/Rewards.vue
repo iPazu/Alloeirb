@@ -22,7 +22,7 @@
   </v-card>
 
     <div class="code-container">
-      <v-text-field class=" justify-center"  color="blue lighten-5"
+      <v-text-field class=" justify-center mx-16"  color="blue lighten-5"
 
                     v-model="code"
                     counter

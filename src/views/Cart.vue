@@ -101,7 +101,7 @@ export default {
     sendJsonOrder(){
       console.log(this.checkIfCorrectInput())
       console.log(this.getJsonOrder())
-      if(parseInt(this.getTotalString().replace(' €','')) === 0){
+      if(parseFloat(this.getTotalString().replace(' €','')) === 0){
         console.log("Aborting command")
         return
       }
