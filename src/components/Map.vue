@@ -38,6 +38,7 @@ export default {
         console.log(location)
 
         this.coursierMarker.setLngLat([location[1], location[0] ])
+        this.map.getSource('route').setData(this.geoJsonPath);
 
     },
     getMiddle(lat1,lat2,lon1,lon2){
