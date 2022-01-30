@@ -13,9 +13,16 @@
     </v-sheet>
     </v-col>
     <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
+      <v-textarea class="mt-7" background-color="blue lighten-5"
+          solo
+                  elevation="6"
+          name="description"
+          label="Décris nous au mieux ta commande"
+                  v-model="description"
+      ></v-textarea>
       <div class="checkout-box " >
-        <v-card class=" mt-16" width="500px" height="400px" elevation="6" color="blue lighten-5">
-          <v-card-title class="text-h5 flex justify-center">Détails de livraison</v-card-title>
+        <v-card class=" mt-5" width="500px" height="400px" elevation="6" color="blue lighten-5">
+          <v-card-title class="flex justify-center">Détails de livraison</v-card-title>
           <v-card-text>
             <v-text-field
                 v-model="phone"
@@ -69,7 +76,7 @@ export default {
   name: "Cart",
   methods: {
     getJsonOrder(){
-      let obj = {phone: this.phone,adress: this.adresse+ " " +this.postal};
+      let obj = {description: this.description,phone: this.phone,adress: this.adresse+ " " +this.postal};
       const product_id = store.state.products.map(product => {
         return product.id;
       });
@@ -124,6 +131,7 @@ export default {
       postal: '',
       oldpricestriked: false,
       validPostalCode: [v => (v.length === 5 && !isNaN(v)) || 'Entrez un numéro valide'],
+      description: ''
 
 
     }
