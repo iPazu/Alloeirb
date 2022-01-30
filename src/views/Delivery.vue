@@ -13,13 +13,16 @@
       <div v-if="orderData.status === 'validation'">
         <h2 class="delivery_subtitle">Votre commande est en attente de validation</h2>
         <h3 class="delivery_desc">Nous allons vous trouver un coursier dés que possible</h3>
+        <div class="gif_surround">
         <img src="../assets/camel_running.gif" alt="camel gif" class="cooking-gif"  width="500" />
-
+        </div>
       </div>
       <div v-if="orderData.status === 'preparing'">
         <h2 class="delivery_subtitle">Votre commande est dans nos fourneaux</h2>
         <h3 class="delivery_desc">Nous allons vous trouver un coursier dés que possible</h3>
-        <img src="../assets/cooking.gif" alt="cooking gif" class="cooking-gif"  width="500" />
+        <div class="gif_surround">
+          <img src="../assets/cooking.gif" alt="cooking gif" class="cooking-gif"  width="500" />
+        </div>
 
       </div>
 
@@ -208,7 +211,11 @@ export default {
 </script>
 
 <style lang="scss">
-
+.gif_surround{
+  opacity: 30%;
+  background-color: #e39e12;
+  border-radius: 30px;
+}
 .delivery_title{
   font-weight: bold;
   font-size: xxx-large;
