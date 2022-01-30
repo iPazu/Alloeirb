@@ -2,7 +2,7 @@
 <div class="page">
 <v-app>
   <v-row>
-    <v-col><h1 class="my-9">Merci pour votre commande</h1>
+    <v-col><h1 class="my-9 delivery_title">Merci pour votre commande</h1>
       <v-progress-linear
           class="my-9"
           :color="getStatusColor()"
@@ -11,24 +11,24 @@
           stream
       ></v-progress-linear>
       <div v-if="orderData.status === 'validation'">
-        <h2 >Votre commande est en attente de validation</h2>
-        <h3>Nous allons vous trouver un coursier dés que possible</h3>
+        <h2 class="delivery_subtitle">Votre commande est en attente de validation</h2>
+        <h3 class="delivery_desc">Nous allons vous trouver un coursier dés que possible</h3>
       </div>
       <div v-if="orderData.status === 'preparing'">
-        <h2 >Votre commande est dans nos fourneaux</h2>
-        <h3>Nous allons vous trouver un coursier dés que possible</h3>
+        <h2 class="delivery_subtitle">Votre commande est dans nos fourneaux</h2>
+        <h3 class="delivery_desc">Nous allons vous trouver un coursier dés que possible</h3>
         <img src="../assets/cooking.gif" alt="cooking gif"  width="500" />
 
       </div>
 
       <div v-if="orderData.status === 'delivering'">
         <v-img class="coursierimg" style="margin: auto" :src="require(`../assets/alaboirie.png`)"  width="150px" height="150px"/>
-        <h2 class="mt-2">{{orderData.coursier}} livre votre commande</h2>
-        <h3>Suivez en direct la localisation de notre livreur</h3>
+        <h2  class="mt-2 delivery_subtitle">{{orderData.coursier}} livre votre commande</h2>
+        <h3 class="delivery_desc">Suivez en direct la localisation de notre livreur</h3>
       </div>
       <div v-if="orderData.status === 'ranking'">
-        <h2>Votre commande à été livrée</h2>
-        <h3>Donnez nous votre ressenti sur cette commande</h3>
+        <h2 class="delivery_subtitle">Votre commande à été livrée</h2>
+        <h3 class="delivery_desc">Donnez nous votre ressenti sur cette commande</h3>
         <v-rating
             v-model="rating"
             color="yellow darken-3"
@@ -205,16 +205,16 @@ export default {
 
 <style lang="scss">
 
-h1{
+.delivery_title{
   font-weight: bold;
   font-size: xxx-large;
 }
-h2{
+.delivery_subtitle{
   margin-top: 50px;
 }
-h3{
+.delivery_desc{
   margin-top: 20px;
-  opacity: 80%;
+  opacity: 0.8;
 }
 .page{
   height: 1000px;

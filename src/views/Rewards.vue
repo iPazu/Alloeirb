@@ -93,6 +93,7 @@ export default {
 </script >
 
 <style lang="scss">
+
 .code{
 
   width: 30%;

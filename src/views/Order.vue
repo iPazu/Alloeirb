@@ -4,7 +4,7 @@
     <v-container class="mx">
       <v-row>
         <v-col>
-          <h1  style="margin-bottom: 25px">Choissisez votre commande</h1>
+          <h1  class="command-title" style="margin-bottom: 25px">Choissisez votre commande</h1>
           <v-divider style="margin-bottom: 20px"></v-divider>
 
         </v-col>
@@ -82,7 +82,7 @@ export default {
   margin-top: 60px;
 
 }
-h1{
+.command-title{
   margin-top: 30px;
   margin-bottom: 50px;
 

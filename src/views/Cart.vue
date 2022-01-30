@@ -3,6 +3,8 @@
   <v-app>
 
     <h1 class="checkout-title ">Votre panier</h1>
+    <v-divider style="margin-bottom: 20px"></v-divider>
+
     <v-row>
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
     <v-sheet   rounded="xl" elevation="6" height="80px" class="mx-3 my-10 d-flex flex-row" color="blue lighten-5" v-for="product in $store.state.products" :key="product.id">
@@ -13,7 +15,7 @@
     </v-sheet>
     </v-col>
     <v-col sm="4" md="4" offset-md="1" order="first" order-sm="last">
-      <v-textarea class="mt-7" background-color="blue lighten-5"
+      <v-textarea class="mt-10" background-color="blue lighten-5"
           solo
                   elevation="6"
           name="description"
@@ -51,7 +53,7 @@
 
             <v-card-title class="flex justify-center pt-0 pb-0">
 <span v-if="oldpricestriked" class="oldprice">{{Math.round($store.getters.getTotalCheckout * 100) / 100 +"€"}}</span>
-             <p class="pb-2 pr-2" v-if="oldpricestriked">→ </p>
+             <p class="pt-3 pr-2" v-if="oldpricestriked">→ </p>
 
               {{  getTotalString()}}
             </v-card-title>

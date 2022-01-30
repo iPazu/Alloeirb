@@ -6,8 +6,8 @@
           <v-divider style="padding-bottom: 20px"></v-divider>
 
           <v-img style="margin: auto" :src="require(`../assets/${productData.icon_url.toString()}`)" width="50px" height="50px"/>
-          <p style="font-weight: bold" class="price">{{productData.unit_price }} €</p>
-          <p style="padding-bottom: 5px">Combien en veux-tu</p>
+          <p  style="font-weight: bold" class="text-area price">{{productData.unit_price }} €</p>
+          <p class="text-area" style="padding-bottom: 5px">Combien en veux-tu</p>
           <v-chip-group style="padding-bottom: 10px">
             <v-chip @click="editNumber(-1)" outlined> -</v-chip>
             <v-chip @click="editNumber(1)" outlined> +</v-chip>
@@ -69,7 +69,7 @@ export default {
 .v-text-field input{
   text-align: center;
 }
-p{
+.text-area{
   padding-top: 20px;
   font-size: 1.2em;
 }
