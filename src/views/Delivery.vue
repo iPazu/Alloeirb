@@ -54,6 +54,8 @@
     </v-col>
   </v-row>
   <Map   :position="[orderData.longitude,orderData.latitude]" :path="getPath()" v-if="orderData.status === 'delivering'"></Map>
+  <h3 v-if="orderData.status === 'delivering'">Ils sont beau nos liveurs non ?</h3>
+
   <v-row v-if="orderData.status === 'validation'">
     <v-col>
       <v-btn  x-large color="error" @click="cancelOrder" lass="align-center">Annuler</v-btn>
