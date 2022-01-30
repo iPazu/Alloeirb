@@ -214,13 +214,11 @@ export default {
 .gif_surround{
   margin: auto;
   width: 500px;
-  background-color: #e39e12;
   border-radius: 30px;
-}
-.gif_surround:before{
-  filter        : blur(10px);
-
-
+  @media only screen and (max-width: 767px) {
+    width: 60%;
+    height: 60%;
+  }
 }
 .delivery_title{
   font-weight: bold;
@@ -240,6 +238,7 @@ export default {
   border-radius: 50%;
 }
 .cooking-gif{
+  backdrop-filter: blur(10px);
   @media only screen and (max-width: 767px) {
     width: 60%;
     height: 60%;
