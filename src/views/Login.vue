@@ -16,6 +16,7 @@ export default {
     let ticket = this.$route.params.ticket
     console.log("ticket: "+ticket)
     console.log("token: "+token)
+    location.reload()
     user.login(token,ticket);
     console.log("Trying to fetch products");
 
