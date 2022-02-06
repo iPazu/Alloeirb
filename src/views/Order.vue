@@ -1,5 +1,4 @@
 <template>
-  <v-col>
     <v-app>
     <v-container class="mx">
       <v-row>
@@ -46,7 +45,6 @@
 
     </v-container>
     </v-app>
-  </div>
 </template>
 
 <script>
