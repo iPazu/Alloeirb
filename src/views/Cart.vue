@@ -7,6 +7,8 @@
 
     <v-row>
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
+      <v-btn color="light-blue" v-if="$store.state.privilege === 'coursier' ||$store.state.privilege === 'admin'"
+             x-large @click="$router.push({ name: `Order` ,params: { updateproducts: 'false' }})" class="command-button mt-5 mx-8">Retour au choix des produits</v-btn>
       <div v-for="product in $store.state.products" :key="product.id">
         <v-sheet   rounded="xl" elevation="6" height="80px" class="mx-3 my-10 d-flex flex-row" color="blue lighten-5" v-if="product.amount !== 0" >
           <v-img class="ml-3 mt-4" :src="require(`../assets/${product.icon_url}`)" max-width="50px" max-height="50px"/>
@@ -150,14 +152,14 @@ export default {
   },
   mounted() {
     scroll(0,0)
-    if(store.state.user_id === 'undefined'){
+    /*if(store.state.user_id === 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order/cart","")
     }
     if(store.state.order_id !== 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order","")
-    }
+    }*/
   }
 
 }

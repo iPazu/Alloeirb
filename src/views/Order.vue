@@ -44,8 +44,10 @@ export default {
     return{
       error: false
     }
-  }
-  ,
+  },
+  props: {
+    updatemap: Boolean,
+  },
   methods: {
     goToCart: function () {
       store.state.products.map((p,index) => {
@@ -62,20 +64,23 @@ export default {
       }
     }
   },
-  mounted() {
-    scroll(0,0)
-    if(store.state.user_id === 'undefined'){
-      router.push({name:'Home'});
-      window.location.href = window.location.href.replace("/order","")
+  mounted: function () {
+    scroll(0, 0)
+    if (store.state.user_id === 'undefined') {
+      router.push({name: 'Home'});
+      window.location.href = window.location.href.replace("/order", "")
     }
-    if(store.state.order_id !== 'undefined'){
-      router.push({name:'Home'});
-      window.location.href = window.location.href.replace("/order","")
+    if (store.state.order_id !== 'undefined') {
+      router.push({name: 'Home'});
+      window.location.href = window.location.href.replace("/order", "")
     }
-    order.getProducts((products) => {
-      console.log(JSON.stringify(products))
-      store.commit("setProducts",[...products]);
-    })
+    if (this.$route.params.updateproducts !== 'false') {
+      order.getProducts((products) => {
+        console.log(JSON.stringify(products))
+        store.commit("setProducts", [...products]);
+      })
+    }
+
   }
 }
 </script>

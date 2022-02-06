@@ -39,6 +39,7 @@ export default {
       pusher:'',
     }
   },
+
   created() {
     if(store.state.user_id === 'undefined'){
       router.push({name:'Home'});

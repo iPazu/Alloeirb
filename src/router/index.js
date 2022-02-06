@@ -20,7 +20,8 @@ const routes = [
   {
     path: '/order',
     name: 'Order',
-    component: Order
+    component: Order,
+    props: true
   },
   {
     path: '/order/cart',
