@@ -22,19 +22,19 @@
 
             <h2>Nourriture</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <div >
+            <div v-for="product in $store.state.products" :key="product.id">
               <ProductCard v-if="product.category === 'food'" :product-data="product"></ProductCard>
             </div>
 
             <h2>Services</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <div >
+            <div v-for="product in $store.state.products" :key="product.id">
               <ProductCard v-if="product.category === 'service'" :product-data="product"></ProductCard>
             </div>
 
             <h2>Autres</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <div >
+            <div v-for="product in $store.state.products" :key="product.id">
               <ProductCard v-if="product.category === 'other'" :product-data="product"></ProductCard>
             </div>
         </v-col>
