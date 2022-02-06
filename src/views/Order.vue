@@ -11,29 +11,31 @@
       </v-row>
 
       <v-row >
+        <div v-for="product in $store.state.products" :key="product.id">
             <h2>Boissons</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
-              <ProductCard v-if="product.category === 'beverage'" :product-data="product" ></ProductCard>
+            <v-col  v-if="product.category === 'beverage'" md="4" sm="6" >
+              <ProductCard  :product-data="product" ></ProductCard>
             </v-col>
 
             <h2>Nourriture</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
-              <ProductCard v-if="product.category === 'food'" :product-data="product"></ProductCard>
+            <v-col md="4" sm="6" v-if="product.category === 'food'" >
+              <ProductCard  :product-data="product"></ProductCard>
             </v-col>
 
             <h2>Services</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
-              <ProductCard v-if="product.category === 'service'" :product-data="product"></ProductCard>
+            <v-col md="4" sm="6" v-if="product.category === 'service'">
+              <ProductCard  :product-data="product"></ProductCard>
             </v-col>
 
             <h2>Autres</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
-              <ProductCard v-if="product.category === 'other'" :product-data="product"></ProductCard>
+            <v-col  md="4" sm="6"  v-if="product.category === 'other'">
+              <ProductCard :product-data="product"></ProductCard>
             </v-col>
+        </div>
       </v-row>
       <v-row>
         <v-col>
