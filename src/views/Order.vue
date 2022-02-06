@@ -9,43 +9,47 @@
 
         </v-col>
       </v-row>
-
-      <v-row >
-
-            <h2>Boissons</h2>
-            <v-divider style="margin-bottom: 20px"></v-divider>
-            <div v-for="product in $store.state.products" :key="product.id" >
-              <v-col  v-if="product.category === 'beverage'" md="4" sm="6" >
-                <ProductCard  :product-data="product" ></ProductCard>
-              </v-col>
-            </div>
+      <h2>Boissons</h2>
+      <v-divider style="margin-bottom: 20px"></v-divider>
+      <div v-for="product in $store.state.products" :key="product.id" >
+        <v-row v-if="product.category === 'beverage'">
+                <v-col   md="4" sm="6" >
+                  <ProductCard  :product-data="product" ></ProductCard>
+                </v-col>
+        </v-row>
+      </div>
 
 
             <h2>Nourriture</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-           <div v-for="product in $store.state.products" :key="product.id" >
-             <v-col md="4" sm="6" v-if="product.category === 'food'" >
-                <ProductCard  :product-data="product"></ProductCard>
-              </v-col>
-           </div>
-
-            <h2>Services</h2>
-            <v-divider style="margin-bottom: 20px"></v-divider>
             <div v-for="product in $store.state.products" :key="product.id" >
-              <v-col md="4" sm="6" v-if="product.category === 'service'">
-                <ProductCard  :product-data="product"></ProductCard>
-              </v-col>
+              <v-row v-if="product.category === 'food'">
+                <v-col   md="4" sm="6" >
+                  <ProductCard  :product-data="product" ></ProductCard>
+                </v-col>
+              </v-row>
             </div>
 
-            <h2>Autres</h2>
-            <v-divider style="margin-bottom: 20px"></v-divider>
-            <div v-for="product in $store.state.products" :key="product.id" >
-              <v-col  md="4" sm="6"  v-if="product.category === 'other'">
-                <ProductCard :product-data="product"></ProductCard>
-              </v-col>
-            </div>
+              <h2>Services</h2>
+              <v-divider style="margin-bottom: 20px"></v-divider>
+              <div v-for="product in $store.state.products" :key="product.id" >
+                <v-row v-if="product.category === 'service'">
+                  <v-col   md="4" sm="6" >
+                    <ProductCard  :product-data="product" ></ProductCard>
+                  </v-col>
+                </v-row>
+              </div>
 
-      </v-row>
+              <h2>Autres</h2>
+              <v-divider style="margin-bottom: 20px"></v-divider>
+              <div v-for="product in $store.state.products" :key="product.id" >
+                <v-row v-if="product.category === 'other'">
+                  <v-col   md="4" sm="6" >
+                    <ProductCard  :product-data="product" ></ProductCard>
+                  </v-col>
+                </v-row>
+              </div>
+
       <v-row>
         <v-col>
           <v-btn color="primary" v-if="!error" @click="goToCart" x-large class="command-button mb-3" >Voir le panier</v-btn>
