@@ -12,26 +12,30 @@
       </v-row>
 
       <v-row >
-          <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
-            <div v-if="product.category === 'beverage'">
-              <h2>Boissons</h2>
-              <v-divider style="margin-bottom: 20px"></v-divider>
-              <ProductCard :product-data="product"></ProductCard>
+          <v-col  md="4" sm="6" >
+
+            <h2>Boissons</h2>
+            <v-divider style="margin-bottom: 20px"></v-divider>
+            <div v-for="product in $store.state.products" :key="product.id" >
+              <ProductCard v-if="product.category === 'beverage'" :product-data="product" ></ProductCard>
             </div>
-            <div v-if="product.category === 'food'">
-              <h2>Nourriture</h2>
-              <v-divider style="margin-bottom: 20px"></v-divider>
-              <ProductCard :product-data="product"></ProductCard>
+
+            <h2>Nourriture</h2>
+            <v-divider style="margin-bottom: 20px"></v-divider>
+            <div >
+              <ProductCard v-if="product.category === 'food'" :product-data="product"></ProductCard>
             </div>
-            <div v-if="product.category === 'service'">
-              <h2>Services</h2>
-              <v-divider style="margin-bottom: 20px"></v-divider>
-              <ProductCard :product-data="product"></ProductCard>
+
+            <h2>Services</h2>
+            <v-divider style="margin-bottom: 20px"></v-divider>
+            <div >
+              <ProductCard v-if="product.category === 'service'" :product-data="product"></ProductCard>
             </div>
-            <div v-if="product.category === 'other'">
-                  <h2>Autres</h2>
-                  <v-divider style="margin-bottom: 20px"></v-divider>
-                  <ProductCard :product-data="product"></ProductCard>
+
+            <h2>Autres</h2>
+            <v-divider style="margin-bottom: 20px"></v-divider>
+            <div >
+              <ProductCard v-if="product.category === 'other'" :product-data="product"></ProductCard>
             </div>
         </v-col>
       </v-row>
