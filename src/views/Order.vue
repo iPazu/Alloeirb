@@ -11,6 +11,7 @@
       </v-row>
 
       <v-row >
+
             <h2>Boissons</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
             <div v-for="product in $store.state.products" :key="product.id" >
