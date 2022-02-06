@@ -23,6 +23,11 @@
                   {{index}} : {{p}}
                 </p>
               </div>
+              <div   v-for="(q,index) in qg" :key="index" >
+                <p  class="black--text mx-8"  >
+                  qg {{index}} :{{distance(q[0],orderData.latitude,q[1],orderData.longitude)}}
+                </p>
+              </div>
               <p>{{orderData.description}}</p>
               <v-btn class="my-4 mx-3" @click="cancelOrder" large color="error">Annuler la commande</v-btn>
             </v-card>
@@ -51,8 +56,8 @@ export default {
   data(){
     return{
       show: false,
-      productData: null
-
+      productData: null,
+      qg: { pessac:[ -0.6303,44.8108]}
 
     }
   },
@@ -66,6 +71,33 @@ export default {
         case 'xl': return 80
       }
     },
+     distance(lat1, lat2, lon1, lon2) {
+
+        // The math module contains a function
+        // named toRadians which converts from
+        // degrees to radians.
+        lon1 =  lon1 * Math.PI / 180;
+        lon2 = lon2 * Math.PI / 180;
+        lat1 = lat1 * Math.PI / 180;
+        lat2 = lat2 * Math.PI / 180;
+
+        // Haversine formula
+        let dlon = lon2 - lon1;
+        let dlat = lat2 - lat1;
+        let a = Math.pow(Math.sin(dlat / 2), 2)
+            + Math.cos(lat1) * Math.cos(lat2)
+            * Math.pow(Math.sin(dlon / 2),2);
+
+        let c = 2 * Math.asin(Math.sqrt(a));
+
+        // Radius of earth in kilometers. Use 3956
+        // for miles
+        let r = 6371;
+
+        // calculate the result
+        return(c * r);
+      }
+    ,
     cancelOrder() {
       console.log("canceling order")
       order.cancelOrder(this.orderData.id, () => {

@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <div>
-        <h1 class=" my-9">Pannel d'administrateur</h1>
+        <h1 class=" my-9">Panel d'administrateur</h1>
       <v-divider class="my-9"></v-divider>
 
       <v-row>
