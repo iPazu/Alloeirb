@@ -25,7 +25,7 @@
               </div>
               <div   v-for="(q,index) in qg" :key="index" >
                 <p  class="black--text mx-8"  >
-                  qg {{index}} : {{distance(q[1],orderData.latitude,q[0],orderData.longitude)}}km
+                  qg {{index}} : {{ Math.round(distance(q[1],orderData.latitude,q[0],orderData.longitude * 100) / 100 )}}km
                 </p>
               </div>
               <p>{{orderData.description}}</p>
@@ -57,7 +57,7 @@ export default {
     return{
       show: false,
       productData: null,
-      qg: { pessac:[ -0.6303,44.8108]}
+      qg: { alex:[ -0.6303,44.8108],noemie:[-0.5802,44.8056],alice:[ -0.5712,44.8389],dimitri:[ -0.5788,44.8234],antoinelh:[-0.6015,44.8215],guillaume:[ -0.61348,44.8289]}
 
     }
   },
