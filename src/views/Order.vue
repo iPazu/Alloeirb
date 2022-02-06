@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-col>
     <v-app>
     <v-container class="mx">
       <v-row>
@@ -12,32 +12,29 @@
       </v-row>
 
       <v-row >
-          <v-col  md="4" sm="6" >
-
             <h2>Boissons</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <div v-for="product in $store.state.products" :key="product.id" >
+            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
               <ProductCard v-if="product.category === 'beverage'" :product-data="product" ></ProductCard>
-            </div>
+            </v-col>
 
             <h2>Nourriture</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <div v-for="product in $store.state.products" :key="product.id">
+            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
               <ProductCard v-if="product.category === 'food'" :product-data="product"></ProductCard>
-            </div>
+            </v-col>
 
             <h2>Services</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <div v-for="product in $store.state.products" :key="product.id">
+            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
               <ProductCard v-if="product.category === 'service'" :product-data="product"></ProductCard>
-            </div>
+            </v-col>
 
             <h2>Autres</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <div v-for="product in $store.state.products" :key="product.id">
+            <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
               <ProductCard v-if="product.category === 'other'" :product-data="product"></ProductCard>
-            </div>
-        </v-col>
+            </v-col>
       </v-row>
       <v-row>
         <v-col>
