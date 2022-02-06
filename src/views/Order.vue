@@ -12,8 +12,8 @@
             <h2>Boissons</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
             <v-row >
-              <div v-for="product in $store.state.products" :key="product.id" >
-                <v-col v-if="product.category === 'bevrage'"  md="4" sm="6" >
+              <div v-for="product in beverageproducts" :key="product.id" >
+                <v-col  md="4" sm="6" >
                   <ProductCard  :product-data="product" ></ProductCard>
                 </v-col>
               </div>
@@ -23,8 +23,8 @@
             <h2>Nourriture</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
             <v-row >
-              <div v-for="product in $store.state.products" :key="product.id" >
-                  <v-col v-if="product.category === 'food'"  md="4" sm="6" >
+              <div v-for="product in foodproducts" :key="product.id" >
+                  <v-col   md="4" sm="6" >
                     <ProductCard  :product-data="product" ></ProductCard>
                   </v-col>
               </div>
@@ -34,8 +34,8 @@
               <h2>Services</h2>
               <v-divider style="margin-bottom: 20px"></v-divider>
               <v-row >
-                <div v-for="product in $store.state.products" :key="product.id" >
-                  <v-col v-if="product.category === 'serrvice'"  md="4" sm="6" >
+                <div v-for="product in servicesproducts" :key="product.id" >
+                  <v-col   md="4" sm="6" >
                     <ProductCard  :product-data="product" ></ProductCard>
                   </v-col>
                 </div>
@@ -44,8 +44,8 @@
               <h2>Autres</h2>
               <v-divider style="margin-bottom: 20px"></v-divider>
               <v-row >
-                <div v-for="product in $store.state.products" :key="product.id" >
-                  <v-col v-if="product.category === 'other'"  md="4" sm="6" >
+                <div v-for="product in otherproducts" :key="product.id" >
+                  <v-col md="4" sm="6" >
                     <ProductCard  :product-data="product" ></ProductCard>
                   </v-col>
                 </div>
@@ -76,7 +76,12 @@ export default {
   },
   data(){
     return{
-      error: false
+      error: false,
+      beverageproducts : [],
+      foodproducts : [],
+      servicesproducts: [],
+      otherproducts: []
+
     }
   },
   props: {
@@ -112,6 +117,20 @@ export default {
       order.getProducts((products) => {
         console.log(JSON.stringify(products))
         store.commit("setProducts", [...products]);
+        products.map((p) => {
+          if(p.category === 'beverage'){
+            this.beverageproducts.push(p)
+          }
+          else if(p.category === 'food'){
+            this.foodproducts.push(p)
+          }
+          else if(p.category === 'service'){
+            this.servicesproducts.push(p)
+          }
+          else if(p.category === 'other'){
+            this.otherproducts.push(p)
+          }
+        })
       })
     }
 
