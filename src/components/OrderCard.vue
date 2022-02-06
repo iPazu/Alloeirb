@@ -25,7 +25,7 @@
               </div>
               <div   v-for="(q,index) in qg" :key="index" >
                 <p  class="black--text mx-8"  >
-                  qg {{index}} :{{distance(q[1],orderData.latitude,q[0],orderData.longitude)}}
+                  qg {{index}} : {{distance(q[1],orderData.latitude,q[0],orderData.longitude)}}km
                 </p>
               </div>
               <p>{{orderData.description}}</p>
