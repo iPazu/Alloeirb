@@ -1,66 +1,32 @@
 <template>
+  <div>
     <v-app>
-    <v-container class="mx">
-      <v-row>
-        <v-col>
-          <h1  class="command-title" style="margin-bottom: 25px">Choissisez votre commande</h1>
-          <h2>Faites vous plaisir avec les produits de notre bazar</h2>
-          <v-divider style="margin-bottom: 20px"></v-divider>
-
-        </v-col>
-      </v-row>
-            <h2>Boissons</h2>
+      <v-container class="mx">
+        <v-row>
+          <v-col>
+            <h1  class="command-title" style="margin-bottom: 25px">Choissisez votre commande</h1>
+            <h2>Faites vous plaisir avec les produits de notre bazar</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-            <v-row >
-              <div v-for="product in beverageproducts" :key="product.id" >
-                <v-col  md="4" sm="6" >
-                  <ProductCard  :product-data="product" ></ProductCard>
-                </v-col>
-              </div>
-            </v-row>
 
+          </v-col>
+        </v-row>
 
-            <h2>Nourriture</h2>
-            <v-divider style="margin-bottom: 20px"></v-divider>
-            <v-row >
-              <div v-for="product in foodproducts" :key="product.id" >
-                  <v-col   md="4" sm="6" >
-                    <ProductCard  :product-data="product" ></ProductCard>
-                  </v-col>
-              </div>
-            </v-row>
+        <v-row >
+          <v-col v-for="product in $store.state.products" :key="product.id" md="4" sm="6" >
+            <ProductCard :product-data="product"></ProductCard>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <v-btn color="primary" v-if="!error" @click="goToCart" x-large class="command-button mb-3" >Voir le panier</v-btn>
+            <v-btn color="error" v-if="error" @click="goToCart" x-large class="command-button mb-3" >Voir le panier</v-btn>
 
+          </v-col>
+        </v-row>
 
-              <h2>Services</h2>
-              <v-divider style="margin-bottom: 20px"></v-divider>
-              <v-row >
-                <div v-for="product in servicesproducts" :key="product.id" >
-                  <v-col   md="4" sm="6" >
-                    <ProductCard  :product-data="product" ></ProductCard>
-                  </v-col>
-                </div>
-              </v-row>
-
-              <h2>Autres</h2>
-              <v-divider style="margin-bottom: 20px"></v-divider>
-              <v-row >
-                <div v-for="product in otherproducts" :key="product.id" >
-                  <v-col md="4" sm="6" >
-                    <ProductCard  :product-data="product" ></ProductCard>
-                  </v-col>
-                </div>
-              </v-row>
-
-      <v-row>
-        <v-col>
-          <v-btn color="primary" v-if="!error" @click="goToCart" x-large class="command-button mb-3" >Voir le panier</v-btn>
-          <v-btn color="error" v-if="error" @click="goToCart" x-large class="command-button mb-3" >Voir le panier</v-btn>
-
-        </v-col>
-      </v-row>
-
-    </v-container>
+      </v-container>
     </v-app>
+  </div>
 </template>
 
 <script>
