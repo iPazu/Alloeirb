@@ -4,6 +4,7 @@ import store from '../store/index'
 
 export async function login(token,ticket){
     let user_id;
+    let firstname;
     let orderid;
     let privilege;
     axios.request({
@@ -24,6 +25,7 @@ export async function login(token,ticket){
 
             }
             user_id = response.data.user_id;
+            firstname = response.data.firstname;
             orderid = response.data.orderid;
             privilege = response.data.privilege;
 
@@ -35,6 +37,7 @@ export async function login(token,ticket){
         console.log(orderid)
 
         store.commit("setUserID",user_id);
+        store.commit("setFirstName",firstname);
         store.commit("setPrivilege",privilege);
 
         if(orderid === undefined)
@@ -44,8 +47,8 @@ export async function login(token,ticket){
 
 
 
-        window.location.href = `${process.env.VUE_APP_CLIENT_URL}/#/`
-        console.log("redirecting")
+        window.location.href = process.env.VUE_APP_CLIENT_URL
+
 
     })
 }

@@ -7,6 +7,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
       user_id: 'undefined',
+      firstname: 'undefined',
       order_id: 'undefined',
       products: 'undefined',
       privilege: 'customer',
@@ -18,6 +19,9 @@ export default new Vuex.Store({
   mutations: {
       setUserID (state,newuser_id) {
         state.user_id = newuser_id;
+      },
+      setFirstName (state,firstnamee) {
+          state.firstname = firstnamee;
       },
       setOrderID (state,orderid) {
           state.order_id = orderid;

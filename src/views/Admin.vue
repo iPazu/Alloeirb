@@ -61,9 +61,12 @@ export default {
 
     refreshOrders(){
       console.log("Refreshing orders")
+
       order.fetchOrders((products) => {
         console.log(products)
+
         this.orders = [...products].reverse()
+
       })
     },
     acceptOrder(orderid){
@@ -72,6 +75,8 @@ export default {
         console.log("Order accepted")
         this.refreshOrders()
       })
+      location.reload()
+
     },
     selectCoursier(orderid){
       console.log("Select coursier")

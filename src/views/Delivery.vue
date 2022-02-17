@@ -102,15 +102,14 @@ export default {
     orderCanceled() {
       store.commit("setOrderID", "undefined")
       router.push({name: 'Home'});
-      window.location.href = "https://alloeirb.fr"
+      window.location.href = process.env.CLIENT_URL
     },
       cancelOrder() {
       console.log("canceling order")
       order.cancelOrder(this.$route.params.orderid, () => {
         store.commit("setOrderID", "undefined")
 
-        router.push({name: 'Home'});
-        window.location.href = "https://alloeirb.fr"
+        window.location.href = process.env.CLIENT_URL
 
 
       });
@@ -125,8 +124,8 @@ export default {
 
         console.log("ranking sent")
         console.log(response)
-        router.push({name: 'Home'});
-        window.location.href = "https://alloeirb.fr"
+        window.location.href = process.env.CLIENT_URL
+
       });
     },
     getStatusInt() {
@@ -163,10 +162,13 @@ export default {
     },
     fetchOrder() {
         console.log("refreshing orderr delivery")
+      if(this.orderData.status === 'ranking' ){
+        return
+      }
         order.getOrder(this.$route.params.orderid, (data) => {
           this.orderData = data;
           console.log(data);
-          if(data.status === 'canceled'){
+          if(data.status === 'canceled' || data.status === 'delivered'){
             this.orderCanceled();
           }
           if(data.status === 'delivering'){
@@ -181,14 +183,17 @@ export default {
     },
   },
   created() {
+    scroll(0,0)
+
     let orderid = this.$route.params.orderid
     console.log("orderid: " + orderid)
 
     order.getOrder(orderid, (data) => {
       this.orderData = data;
-      if(data.status === 'canceled'){
+      if(data.status === 'canceled' || data.status === 'delivered' ){
         this.orderCanceled();
       }
+
       if(data.status === 'delivering'){
         console.log("update coursier loc")
         console.log(data.coursierpos)

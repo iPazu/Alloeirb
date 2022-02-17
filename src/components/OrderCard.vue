@@ -19,7 +19,7 @@
             <v-divider></v-divider>
             <v-card elevation="1  "  class="d-flex flex-row flex-wrap" color="white" >
               <div   v-for="(p, index) in productData" :key="index" >
-                <p  class="black--text mx-8"  >
+                <p  v-if="p !== 0" class="black--text mx-8"  >
                   {{index}} : {{p}}
                 </p>
               </div>
@@ -28,7 +28,8 @@
                   qg {{index}} : {{ Math.round(distance(q[1],orderData.latitude,q[0],orderData.longitude) * 100) / 100 }}km
                 </p>
               </div>
-              <p>{{orderData.description}}</p>
+              <p class="ml-3">description: {{orderData.description}}</p>
+              <p class="ml-3">telephone: {{orderData.phone}}</p>
               <v-btn class="my-4 mx-3" @click="cancelOrder" large color="error">Annuler la commande</v-btn>
             </v-card>
 
@@ -111,6 +112,7 @@ export default {
     console.log("eee")
     console.log(this.orderData.products)
     this.productData = JSON.parse(this.orderData.products)
+    this.orderData.products
   }
 
 }

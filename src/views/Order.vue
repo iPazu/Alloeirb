@@ -7,7 +7,6 @@
             <h1  class="command-title" style="margin-bottom: 25px">Choissisez votre commande</h1>
             <h2>Faites vous plaisir avec les produits de notre bazar</h2>
             <v-divider style="margin-bottom: 20px"></v-divider>
-
           </v-col>
         </v-row>
 
@@ -43,11 +42,6 @@ export default {
   data(){
     return{
       error: false,
-      beverageproducts : [],
-      foodproducts : [],
-      servicesproducts: [],
-      otherproducts: []
-
     }
   },
   props: {
