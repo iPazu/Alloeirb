@@ -16,8 +16,7 @@
 
     <div class="message">
 
-
-      <h1 style="font-size: xxx-large">Salut {{$store.state.firstname}}</h1>
+      <h1 style="font-size: xxx-large">Salut Alex</h1>
 
       <div class="order" v-if="$store.state.order_id === 'undefined'">
         <h3 >Prêt à passer à la vitesse supérieure ? </h3>
