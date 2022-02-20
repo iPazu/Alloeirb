@@ -75,7 +75,6 @@ export default {
         console.log("Order accepted")
         this.refreshOrders()
       })
-      location.reload()
 
     },
     selectCoursier(orderid){
