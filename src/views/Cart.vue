@@ -129,7 +129,7 @@ export default {
         this.oldpricestriked = true
         console.log("promotion" +promotion)
        let newtotal = total - total*(promotion/100)
-        return newtotal + " €"
+        return Math.round(newtotal * 100) / 100 + " €"
       }
      return total + " €"
 

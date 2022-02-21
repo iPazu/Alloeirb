@@ -219,7 +219,7 @@ export default {
 .gif_surround{
   margin: auto;
   width: 500px;
-  border-radius: 30px;
+  border-radius: 50%;
   @media only screen and (max-width: 767px) {
     width: 60%;
     height: 60%;
