@@ -8,7 +8,7 @@
         <v-col sm="8" md="10" offset-md="1"  class="my-15 "  v-for="order in orders " :key="order.orderid" >
 
 
-          <OrderCard  v-if="order.status !== 'ranking'" :delivered="delivered" :select-coursier="selectCoursier" :accept-order="acceptOrder"
+          <OrderCard   :delivered="delivered" :select-coursier="selectCoursier" :accept-order="acceptOrder"
                       :order-data="order"/>
 
 

@@ -77,20 +77,6 @@ export default {
       order.getProducts((products) => {
         console.log(JSON.stringify(products))
         store.commit("setProducts", [...products]);
-        products.map((p) => {
-          if(p.category === 'beverage'){
-            this.beverageproducts.push(p)
-          }
-          else if(p.category === 'food'){
-            this.foodproducts.push(p)
-          }
-          else if(p.category === 'service'){
-            this.servicesproducts.push(p)
-          }
-          else if(p.category === 'other'){
-            this.otherproducts.push(p)
-          }
-        })
       })
     }
 

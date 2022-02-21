@@ -243,6 +243,7 @@ export default {
   border-radius: 50%;
 }
 .cooking-gif{
+  border-radius: 50%;
   backdrop-filter: blur(10px);
   @media only screen and (max-width: 767px) {
     width: 60%;
