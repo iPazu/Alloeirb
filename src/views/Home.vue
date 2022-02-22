@@ -3,6 +3,9 @@
 
   <v-app>
     <div class="banner">
+      <a class="logo_rms" href="https://rams.eirb.fr">
+        <img src="../assets/logo_rms.png" alt="Logo Rams'eirb">
+      </a>
       <h1>AlloEirb</h1>
     </div>
     <div>
@@ -101,5 +104,15 @@ export default {
 .message > h1{
   padding-bottom: 5%;
 }
-
+.logo_rms > img{
+  position: absolute;
+  left: 2%;
+  top: 10px;
+  border-style: solid;
+  border-color: rgba(255, 204, 0, 0.24);
+  padding: 4px 4px 4px 4px;
+  width: 9vh;
+  height: 9vh;
+  border-radius: 50%;
+}
 </style>
