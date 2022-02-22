@@ -3,7 +3,6 @@
 
   <v-app>
     <div class="banner">
-      <img src="../assets/logo_rms.JPG" alt="Logo Rams'eirb">
       <h1>AlloEirb</h1>
     </div>
     <div>

@@ -3,8 +3,12 @@
     <router-view/>
     <div class="footer">
       <div class="content">
-        <p>A VueJS/NodeJS app created by Alex Laboirie</p>
+        <p>A VueJS / NodeJS app created by <span style="font-weight: bold"> Alex Laboirie</span></p>
+        <a class="logo_rms" href="https://rams.eirb.fr">
+          <img src="./assets/logo_rms.png" alt="Logo Rams'eirb">
+        </a>
       </div>
+
     </div>
   </div>
 </template>
@@ -52,5 +56,15 @@
   color: white;
 
 }
-
+.logo_rms > img{
+  position: absolute;
+  right: 2%;
+  top: 10px;
+  border-style: solid;
+  border-color: rgba(255, 204, 0, 0.68);
+  padding: 4px 4px 4px 4px;
+  width: 7vh;
+  height: 7vh;
+  border-radius: 50%;
+}
 </style>
