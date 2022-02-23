@@ -1,8 +1,6 @@
 <template>
   <div class="error_message">
-    <h1>Si vous voyez cette page un petit reload devrait résoudre le problème</h1>
-    <h2>Ticket: {{$route.params.ticket}}</h2>
-    <h2>Token: {{$route.params.token}}</h2>
+
   </div>
 </template>
 
@@ -18,7 +16,7 @@ export default {
     console.log("token: "+token)
     user.login(token,ticket);
     console.log("Trying to fetch products");
-    
+
   }
 }
 
