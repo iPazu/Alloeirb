@@ -8,7 +8,8 @@
         <v-col sm="8" md="10" offset-md="1"  class="my-15 "  v-for="order in orders " :key="order.orderid" >
 
 
-          <OrderCard  :delivered="delivered" :select-coursier="selectCoursier" :accept-order="acceptOrder"
+          <OrderCard v-if="order.status !== 'delivering' || (order.status === 'delivering' && order.coursier === $store
+.state.user_id)" :delivered="delivered" :select-coursier="selectCoursier" :accept-order="acceptOrder"
                       :order-data="order"/>
 
 
