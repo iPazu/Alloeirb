@@ -16,7 +16,7 @@ export function sendOrder(jsonObject,_then){
         .then(response => _then(response))
         .catch((error) => {
             console.log(error)
-            _then(error);
+            _then(error.response);
         })
 }
 
