@@ -7,6 +7,8 @@ import Cart from "@/views/Cart";
 import Delivery from "@/views/Delivery";
 import Admin from "@/views/Admin";
 import Rewards from "@/views/Rewards";
+import Forbiden from "@/views/Forbiden";
+import Down from "@/views/Down";
 
 
 Vue.use(VueRouter)
@@ -42,6 +44,16 @@ const routes = [
     path: '/rewards',
     name: 'Rewards',
     component: Rewards
+  },
+  {
+    path: '/forbiden',
+    name: 'Forbiden',
+    component: Forbiden
+  },
+  {
+    path: '/noaccess',
+    name: 'Down',
+    component: Down
   },
   {
     //

@@ -62,6 +62,8 @@ export default {
   },
   mounted() {
     let user_id = undefined;
+
+
     user.getUserId((uid) => {
       console.log('Trying connection');
       console.log(process.env.VUE_APP_CLIENT_URL)

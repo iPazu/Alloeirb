@@ -10,7 +10,6 @@
     </div>
   </div>
 </template>
-
 <style lang="scss">
 @font-face {
   font-family: "ROMANUS";

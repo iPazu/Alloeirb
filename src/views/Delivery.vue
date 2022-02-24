@@ -75,7 +75,6 @@
 
 <script>
 import * as order from "@/script/Order";
-import router from "@/router";
 import store from "@/store";
 import Map from '../components/Map'
 
@@ -101,7 +100,6 @@ export default {
     },
     orderCanceled() {
       store.commit("setOrderID", "undefined")
-      router.push({name: 'Home'});
       window.location.href = process.env.CLIENT_URL
     },
       cancelOrder() {
