@@ -94,7 +94,8 @@ export default {
       cousierName: {alaboirie:'Alex',tfacen:'Théo',tlemestre: 'Théo',aclochard:'Amaury',dwalther:'Dimitri',alaurent026:'Alban',
       alducq:'Alexiane',iboukhars:'Ines',mhellias004:'Margot',mreinert:'Mathis',mrozec001: 'Marion',mmezencev:'Marin',nkegltourne:"Hamza",
       tgainard001:'Thomas',zbachellier:'Zoé',aaugerat:"Alice",sraguenessc:"Segal",alhonora:"Antoine",eroncin:"Elisa",dbritelle:"Diane",
-        csammou:'Chadi',cdu:"Camille",aboucher007:"Antoine",plarue:"Paul"}
+        csammou:'Chadi',cdu:"Camille",aboucher007:"Antoine",plarue:"Paul",vvicier:"Valentin",saserres:"Sabrina",llefebvre011:"Louis",ivasseur:"Inès",
+        gbaratange:"Guillaume",luchaussat:"Lucas"}
     }
   },
   methods: {
