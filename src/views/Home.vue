@@ -47,6 +47,7 @@
 <script>
 import * as user from '../script/User'
 import store from "@/store";
+import router from "@/router";
 
 export default {
   name: 'Home',
@@ -62,7 +63,12 @@ export default {
   },
   mounted() {
     let user_id = undefined;
-
+    console.log("showing if disponible")
+    console.log(process.env.DISPONIBLE_STATUS)
+    if(process.env.DISPONIBLE_STATUS === false){
+      router.push('Down')
+      return
+    }
 
     user.getUserId((uid) => {
       console.log('Trying connection');
