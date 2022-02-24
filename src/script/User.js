@@ -6,6 +6,8 @@ import router from "@/router";
 export async function login(token,ticket){
     let user_id;
     let firstname;
+    let lastname;
+
     let orderid;
     let privilege;
     let c = true;
@@ -29,6 +31,8 @@ export async function login(token,ticket){
             }
             user_id = response.data.user_id;
             firstname = response.data.firstname;
+            firstname = response.data.lastname;
+
             orderid = response.data.orderid;
             privilege = response.data.privilege;
 
@@ -46,7 +50,9 @@ export async function login(token,ticket){
 
         store.commit("setUserID",user_id);
         store.commit("setFirstName",firstname);
-        store.commit("setPrivilege",privilege);
+            store.commit("setFirstName",lastname);
+
+            store.commit("setPrivilege",privilege);
 
         if(orderid === undefined)
             store.commit("setOrderID",'undefined');

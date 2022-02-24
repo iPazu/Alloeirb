@@ -84,7 +84,8 @@ export default {
   name: "Cart",
   methods: {
     getJsonOrder(){
-      let obj = {description: this.description,phone: this.phone,adress: this.adresse+ " " +this.postal};
+      let obj = {description: this.description,firstname: store.state.firstname,lastname: store.state.lastname
+        ,phone: this.phone,adress: this.adresse+ " " +this.postal};
       const product_id = store.state.products.map(product => {
         return product.id;
       });

@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
       user_id: 'undefined',
       firstname: 'undefined',
+      lastname: 'undefined',
       order_id: 'undefined',
       products: 'undefined',
       privilege: 'customer',
@@ -21,6 +22,9 @@ export default new Vuex.Store({
         state.user_id = newuser_id;
       },
       setFirstName (state,firstnamee) {
+          state.firstname = firstnamee;
+      },
+      setLastName (state,firstnamee) {
           state.firstname = firstnamee;
       },
       setOrderID (state,orderid) {
