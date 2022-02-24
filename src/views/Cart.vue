@@ -4,9 +4,7 @@
 
     <h1 class="checkout-title mb-6">Votre panier</h1>
     <v-divider style="margin-bottom: 20px"></v-divider>
-    <v-alert v-if="alertVisible === true" type="warning">
-      {{this.alertText}}
-    <v-row>
+
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
       <v-btn color="light-blue" v-if="$store.state.privilege === 'coursier' ||$store.state.privilege === 'admin'"
              x-large @click="$router.push({ name: `Order` ,params: { updateproducts: 'false' }})" class="command-button mt-5 mx-8">Retour au choix des produits</v-btn>
