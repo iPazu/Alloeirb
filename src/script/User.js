@@ -31,7 +31,7 @@ export async function login(token,ticket){
             }
             user_id = response.data.user_id;
             firstname = response.data.firstname;
-            firstname = response.data.lastname;
+            lastname = response.data.lastname;
 
             orderid = response.data.orderid;
             privilege = response.data.privilege;

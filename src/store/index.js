@@ -24,8 +24,8 @@ export default new Vuex.Store({
       setFirstName (state,firstnamee) {
           state.firstname = firstnamee;
       },
-      setLastName (state,firstnamee) {
-          state.firstname = firstnamee;
+      setLastName (state,lastnamee) {
+          state.lastname = lastnamee;
       },
       setOrderID (state,orderid) {
           state.order_id = orderid;
