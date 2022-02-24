@@ -13,6 +13,7 @@ export async function login(token,ticket){
         withCredentials: true,
     })
         .then((response) => {
+            alert(response.status)
             console.log("from axios : "+ response.data);
             console.log(response.data)
             localStorage.setItem('accessToken', response.data.accessToken);

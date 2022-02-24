@@ -164,6 +164,10 @@ export default {
   },
   mounted() {
     scroll(0,0)
+    if(process.env.VUE_APP_DISPONIBLE === 'false'){
+      router.push({name: 'Down'});
+      return
+    }
     if(store.state.user_id === 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order/cart","")

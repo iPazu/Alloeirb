@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: "Forbiden"
+  name: "Forbiden",
+  mounted() {
+    if(process.env.VUE_APP_DISPONIBLE === 'true'){
+      window.location.href = process.env.CLIENT_URL
+    }
+  }
 }
 </script>
 

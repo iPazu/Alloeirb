@@ -77,6 +77,7 @@
 import * as order from "@/script/Order";
 import store from "@/store";
 import Map from '../components/Map'
+import router from "@/router";
 
 
 export default {
@@ -93,6 +94,7 @@ export default {
     }
   },
   methods: {
+
     getPath(){
       console.log("from path")
       console.log(this.orderData.geojsonPath)
@@ -182,7 +184,10 @@ export default {
   },
   created() {
     scroll(0,0)
-
+    if(process.env.VUE_APP_DISPONIBLE === 'false'){
+      router.push({name: 'Down'});
+      return
+    }
     let orderid = this.$route.params.orderid
     console.log("orderid: " + orderid)
 

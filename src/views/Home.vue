@@ -65,7 +65,6 @@ export default {
     let user_id = undefined;
     console.log(process.env.VUE_APP_DISPONIBLE)
     if(process.env.VUE_APP_DISPONIBLE === 'false'){
-      console.log("not disponible")
       router.push("noaccess")
       return
     }
