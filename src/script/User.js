@@ -50,7 +50,7 @@ export async function login(token,ticket){
 
         store.commit("setUserID",user_id);
         store.commit("setFirstName",firstname);
-            store.commit("setFirstName",lastname);
+        store.commit("setLastName",lastname);
 
             store.commit("setPrivilege",privilege);
 
