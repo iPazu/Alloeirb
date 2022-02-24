@@ -91,7 +91,10 @@ export default {
       interval: '',
       rating: 5,
       message: '',
-      cousierName: {alaboirie:'Alex',tfacen:'Théo'}
+      cousierName: {alaboirie:'Alex',tfacen:'Théo',tlemestre: 'Théo',aclochard:'Amaury',dwalther:'Dimitri',alaurent026:'Alban',
+      alducq:'Alexiane',iboukhars:'Ines',mhellias004:'Margot',mreinert:'Mathis',mrozec001: 'Marion',mmezencev:'Marin',nkegltourne:"Hamza",
+      tgainard001:'Thomas',zbachellier:'Zoé',aaugerat:"Alice",sraguenessc:"Segal",alhonora:"Antoine",eroncin:"Elisa",dbritelle:"Diane",
+        csammou:'Chadi',cdu:"Camille",aboucher007:"Antoine",plarue:"Paul"}
     }
   },
   methods: {
