@@ -168,10 +168,7 @@ export default {
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order/cart","")
     }
-    if(store.state.order_id !== 'undefined'){
-      router.push({name:'Home'});
-      window.location.href = window.location.href.replace("/order","")
-    }
+
   }
 
 }

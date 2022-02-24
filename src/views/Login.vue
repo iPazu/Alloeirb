@@ -1,5 +1,5 @@
 <template>
-  <div class="error_message">
+  <div class="error_message" style="height: 100vh">
 
   </div>
 </template>
