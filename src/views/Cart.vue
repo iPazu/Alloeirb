@@ -4,7 +4,8 @@
 
     <h1 class="checkout-title mb-6">Votre panier</h1>
     <v-divider style="margin-bottom: 20px"></v-divider>
-
+    <v-alert v-if="alertVisible === true" type="warning">
+      {{this.alertText}}
     <v-row>
     <v-col sm="8" md="5" offset-md="1"  class="my-15 flex align-center">
       <v-btn color="light-blue" v-if="$store.state.privilege === 'coursier' ||$store.state.privilege === 'admin'"
@@ -111,12 +112,21 @@ export default {
 
       if(this.checkIfCorrectInput()){
         console.log("sending json order");
-        order.sendOrder(this.getJsonOrder(),(orderid) => {
-          console.log(orderid)
-          store.commit("setOrderID",orderid.data)
-          store.commit("resetProductAmount")
+        order.sendOrder(this.getJsonOrder(),(response) => {
+          if (response.status === 200) {
+            console.log(response)
+            store.commit("setOrderID",response.data)
+            store.commit("resetProductAmount")
+            router.push({ path: `/delivery/${store.state.order_id}`});
+          } else {
+            this.alertVisible = true
+            if (response.status === 609) {
+              this.alertText = "Vous possèdez déjà une commande , appuyez sur le bouton déconecter sur la page d'accueil"
+            } else if (response.status === 509) {
+              this.alertText = "Un grand nombre de commandes est actuellement en cours, reessayez dans quelques minutes."
+            }
+          }
 
-          router.push({ path: `/delivery/${store.state.order_id}`});
         });
       }
       }
@@ -145,21 +155,23 @@ export default {
       postal: '',
       oldpricestriked: false,
       validPostalCode: [v => (v.length === 5 && !isNaN(v)) || 'Entrez un numéro valide'],
-      description: ''
+      description: '',
+      alertVisible: false,
+      alertText: ''
 
 
     }
   },
   mounted() {
     scroll(0,0)
-    /*if(store.state.user_id === 'undefined'){
+    if(store.state.user_id === 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order/cart","")
     }
     if(store.state.order_id !== 'undefined'){
       router.push({name:'Home'});
       window.location.href = window.location.href.replace("/order","")
-    }*/
+    }
   }
 
 }

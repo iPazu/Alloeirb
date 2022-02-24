@@ -1,6 +1,6 @@
 <template>
 <v-app>
-  <h1></h1>
+  <h1>Codes promos</h1>
   <v-alert v-if="alertVisible === true" :type="alertType">
     {{this.alertText}}
   </v-alert>
@@ -85,7 +85,7 @@ export default {
       code: '',
       alertVisible: false,
       alertType: 'success',
-      alertText: 'eeeee'
+      alertText: ''
 
     }
   }
