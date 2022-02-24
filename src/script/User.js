@@ -1,5 +1,6 @@
 import axios from "axios";
 import store from '../store/index'
+import router from "@/router";
 
 
 export async function login(token,ticket){
@@ -7,13 +8,14 @@ export async function login(token,ticket){
     let firstname;
     let orderid;
     let privilege;
+    let c = true;
     axios.request({
         method: "GET",
         url: `${process.env.VUE_APP_API_URL}/api` + `/login/${token}/${ticket}`,
         withCredentials: true,
     })
         .then((response) => {
-            alert(response.status)
+
             console.log("from axios : "+ response.data);
             console.log(response.data)
             localStorage.setItem('accessToken', response.data.accessToken);
@@ -32,7 +34,12 @@ export async function login(token,ticket){
 
         }).catch((error) => {
         console.log(error);
+        if(error.response.status === 706){
+            c = false;
+            router.push({name: 'Forbiden'});
+        }
     }).then(function(){
+        if(c){
         console.log("from login : ")
         console.log(user_id)
         console.log(orderid)
@@ -49,6 +56,7 @@ export async function login(token,ticket){
 
 
         window.location.href = process.env.VUE_APP_CLIENT_URL
+        }
 
 
     })
