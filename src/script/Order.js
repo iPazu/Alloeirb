@@ -13,7 +13,11 @@ export function sendOrder(jsonObject,_then){
             Authorization: "Bearer " + localStorage.getItem("accessToken")
         },
         withCredentials: true })
-        .then(response => _then(response));
+        .then(response => _then(response))
+        .catch((error) => {
+            console.log(error)
+            _then(error);
+        })
 }
 
 export function setRanking(jsonObject,orderId,_then){
