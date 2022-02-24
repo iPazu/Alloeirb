@@ -3,7 +3,7 @@
     <img src="../assets/forbiden.png" alt="time ticking">
     <h1>Vous n'avez pas accès à cette application</h1>
     <h2>L'accès est réservé aux éleves de l'Enseirb-Matmeca</h2>
-    <h2>Si vous souhaitez obtenir tout de même un accès, contactez Alex Laboirie sur le reseau social de votre choix</h2>
+    <h2>Si vous souhaitez obtenir tout de même un accès, contactez <span style="font-weight: bold">Alex Laboirie </span> sur le reseau social de votre choix</h2>
 
   </div>
 </template>
