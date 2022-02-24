@@ -63,10 +63,10 @@ export default {
   },
   mounted() {
     let user_id = undefined;
-    console.log("showing if disponible")
-    console.log(process.env.DISPONIBLE_STATUS)
-    if(process.env.DISPONIBLE_STATUS === false){
-      router.push('Down')
+    console.log(process.env.VUE_APP_DISPONIBLE)
+    if(process.env.VUE_APP_DISPONIBLE === 'false'){
+      console.log("not disponible")
+      router.push("noaccess")
       return
     }
 

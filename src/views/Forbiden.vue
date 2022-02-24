@@ -1,10 +1,11 @@
 <template>
-<div class="forbiden_content">
-  <img src="../assets/sand-clock.png" alt="no access" >
-  <h1>Les allos ne sont pas disponibles pour le moment</h1>
-  <h2>Suivez les communications de Rams'eirb pour la prochaine réouverture des livraisons</h2>
+  <div class="forbiden_content">
+    <img src="../assets/forbiden.png" alt="time ticking">
+    <h1>Vous n'avez pas accès à cette application</h1>
+    <h2>L'accès est réservé aux éleves de l'Enseirb-Matmeca</h2>
+    <h2>Si vous souhaitez obtenir tout de même un accès, contactez Alex Laboirie sur le reseau social de votre choix</h2>
 
-</div>
+  </div>
 </template>
 
 <script>
