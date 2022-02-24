@@ -28,7 +28,7 @@
 
       <div v-if="orderData.status === 'delivering'">
         <v-img class="coursierimg" style="margin: auto" :src="require(`@/assets/team/`+orderData.coursier+`.jpeg`)" width="150px" height="150px"/>
-        <h2  class="mt-2 delivery_subtitle">{{orderData.coursier}} livre votre commande</h2>
+        <h2  class="mt-2 delivery_subtitle">{{this.cousierName[orderData.coursier]}} livre votre commande</h2>
         <h3 class="delivery_desc">Suivez en direct la localisation de notre livreur</h3>
       </div>
       <div v-if="orderData.status === 'ranking'">
@@ -90,7 +90,8 @@ export default {
       orderData: '',
       interval: '',
       rating: 5,
-      message: ''
+      message: '',
+      cousierName: {alaboirie:'Alex',tfacen:'Théo'}
     }
   },
   methods: {
