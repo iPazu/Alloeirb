@@ -26,7 +26,7 @@
 
                     v-model="code"
                     counter
-                    maxlength="10"
+                    maxlength="20"
                     hint="Entre un code"
                     label="code"
                     solo
