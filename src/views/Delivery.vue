@@ -107,15 +107,13 @@ export default {
     },
     orderCanceled() {
       store.commit("setOrderID", "undefined")
-      window.location.href = process.env.CLIENT_URL
+      router.push({name: 'Home'});
     },
       cancelOrder() {
       console.log("canceling order")
       order.cancelOrder(this.$route.params.orderid, () => {
         store.commit("setOrderID", "undefined")
-
-        window.location.href = process.env.CLIENT_URL
-
+        router.push({name: 'Home'});
 
       });
     },
