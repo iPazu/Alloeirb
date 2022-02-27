@@ -79,7 +79,6 @@ export default {
     }
     if (this.$route.params.updateproducts !== 'false') {
       order.getProducts((products) => {
-        console.log(JSON.stringify(products))
         store.commit("setProducts", [...products]);
       })
     }
