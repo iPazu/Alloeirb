@@ -21,7 +21,7 @@
                 filled
                 rounded
                 dense
-                  :maxlength="productData.stock"
+                  maxlength="2"
                 v-model="productData.amount"
 
             ></v-text-field></v-col>
