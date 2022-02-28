@@ -40,24 +40,6 @@ export default {
       pusher:'',
     }
   },
-
-  created() {
-    if(store.state.user_id === 'undefined'){
-      router.push({name:'Home'});
-      window.location.href = window.location.href.replace("/order/cart","")
-    }
-    if(store.state.privilege !== 'admin' && store.state.privilege !== 'coursier'){
-      router.push({name:'Home'});
-      window.location.href = window.location.href.replace("/order","")
-    }
-    order.fetchOrders((products) => {
-      console.log(products)
-      this.orders = [...products].reverse()
-
-    })
-
-
-  },
   methods: {
 
     refreshOrders(){
@@ -92,6 +74,24 @@ export default {
         this.refreshOrders()
       })
     }
+  },
+  created() {
+    if(store.state.user_id === 'undefined'){
+      router.push({name:'Home'});
+      window.location.href = window.location.href.replace("/order/cart","")
+    }
+    if(store.state.privilege !== 'admin' && store.state.privilege !== 'coursier'){
+      router.push({name:'Home'});
+      window.location.href = window.location.href.replace("/order","")
+    }
+    order.fetchOrders((products) => {
+      console.log(products)
+      this.orders = [...products].reverse()
+
+    })
+    this.interval = setInterval(this.refreshOrders, 5000);
+
+
   },
   beforeDestroy() {
     clearInterval(this.intervalOrders);
