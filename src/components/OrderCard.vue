@@ -7,8 +7,8 @@
         <p class="flex justify-start ml-5 mt-2 pt-3 rounded-lg white elevation-4 number" >{{orderData.firstname}} {{orderData.lastname}}</p>
         <p class="flex justify-start ml-5  mt-2 pt-3 rounded-lg white elevation-4 number" >{{orderData.adresse}}</p>
         <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" >{{Math.round(orderData.total*100)/100}} €</p>
-        <v-btn class="my-4 mx-3" @click="acceptOrder(orderData.id)" v-if="orderData.status === 'validation'" large color="primary">Accepter la commande</v-btn>
-        <v-btn class="my-4 mx-3" @click="selectCoursier(orderData.id)" v-if="orderData.status === 'preparing'" large color="primary">Livrer cette commande</v-btn>
+        <v-btn class="my-4 mx-3" @click="makeRequest(acceptOrder,orderData.id)" v-if="orderData.status === 'validation'" large color="primary">Accepter la commande</v-btn>
+        <v-btn class="my-4 mx-3" @click="makeRequest(selectCoursier,orderData.id)" v-if="orderData.status === 'preparing'" large color="primary">Livrer cette commande</v-btn>
         <v-btn class="my-4 mx-3" @click="delivered(orderData.id)" v-if="orderData.status === 'delivering'" large color="secondary">Valider la livraison</v-btn>
         <v-btn class="my-4 mx-3" v-if="orderData.status === 'ranking'" large color="secondary">Livrée</v-btn>
         <v-btn class="my-4 mx-3" v-if="orderData.status === 'delivered'" large color="secondary">Livrée et notée</v-btn>
@@ -106,6 +106,21 @@ export default {
         location.reload()
       });
   },
+    updateColor(){
+      if(this.orderData.status === "delivering"){
+        this.colorstr = "green"
+      }
+      if(this.orderData.status === "validation"){
+        this.colorstr = "orange"
+      }
+      if(this.orderData.status === "preparing"){
+        this.colorstr = "yellow "
+      }
+    },
+    makeRequest(func,id){
+      func(id)
+      this.updateColor()
+    }
   },
 
   created() {
@@ -113,15 +128,7 @@ export default {
     console.log("eee")
     console.log(this.orderData.products)
     this.productData = JSON.parse(this.orderData.products)
-    if(this.orderData.status === "delivering"){
-      this.colorstr = "green"
-    }
-    if(this.orderData.status === "validation"){
-      this.colorstr = "orange"
-    }
-    if(this.orderData.status === "preparing"){
-      this.colorstr = "yellow "
-    }
+    this.updatingColor()
   }
 
 }
