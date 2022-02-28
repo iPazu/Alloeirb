@@ -10,7 +10,7 @@
 
           <OrderCard v-if="order.status !== 'delivering' || (order.status === 'delivering' && order.coursier === $store
 .state.user_id)" :delivered="delivered" :select-coursier="selectCoursier" :accept-order="acceptOrder"
-                      :order-data="order"/>
+                      :order-data="order" :color="order.coursier === $store.state.user_id"/>
 
 
 
@@ -89,7 +89,7 @@ export default {
       this.orders = [...products].reverse()
 
     })
-    this.interval = setInterval(this.refreshOrders, 5000);
+    this.intervalOrders = setInterval(this.refreshOrders, 5000);
 
 
   },

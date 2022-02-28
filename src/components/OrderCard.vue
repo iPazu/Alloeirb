@@ -52,14 +52,15 @@ export default {
     orderData: Object,
     acceptOrder: Function,
     selectCoursier: Function,
-    delivered: Function
+    delivered: Function,
+    color: Boolean
   },
   data(){
     return{
       show: false,
       productData: null,
-      qg: { alex:[ -0.6303,44.8108],noemie:[-0.5802,44.8056],dimitri:[ -0.5788,44.8234],antoinelh:[-0.6015,44.8215],theolm:[  -0.6031,44.8071]}
-
+      qg: { alex:[ -0.6303,44.8108],noemie:[-0.5802,44.8056],dimitri:[ -0.5788,44.8234],antoinelh:[-0.6015,44.8215],theolm:[  -0.6031,44.8071]},
+      colorstr: 'grey lighten-5'
     }
   },
   methods:{
@@ -112,7 +113,9 @@ export default {
     console.log("eee")
     console.log(this.orderData.products)
     this.productData = JSON.parse(this.orderData.products)
-    this.orderData.products
+    if(this.color === true){
+      this.colorstr = "green"
+    }
   }
 
 }
