@@ -1,6 +1,6 @@
 <template>
   <div>
-      <v-card elevation="2" sm-height :height="height()" class="mx-3 my-10 " :color="colorstr" @click="show = !show" >
+      <v-card elevation="2" sm-height :height="height()" class="mx-3 my-10 " :color="getColor" @click="show = !show" >
         <div class="header d-flex flex-row flex-wrap">
 
 
@@ -53,14 +53,12 @@ export default {
     acceptOrder: Function,
     selectCoursier: Function,
     delivered: Function,
-    color: Boolean
   },
   data(){
     return{
       show: false,
       productData: null,
       qg: { alex:[ -0.6303,44.8108],noemie:[-0.5802,44.8056],dimitri:[ -0.5788,44.8234],antoinelh:[-0.6015,44.8215],theolm:[  -0.6031,44.8071]},
-      colorstr: 'orange'
     }
   },
   methods:{
@@ -106,21 +104,18 @@ export default {
         location.reload()
       });
   },
-    updateColor(){
+    getColor(){
       if(this.orderData.status === "delivering"){
-        this.colorstr = "green"
+        return "green"
       }
       if(this.orderData.status === "validation"){
-        this.colorstr = "orange"
+        return "orange"
       }
       if(this.orderData.status === "preparing"){
-        this.colorstr = "yellow "
+        return "yellow "
       }
     },
-    makeRequest(func,id){
-      func(id)
-      this.updateColor()
-    }
+
   },
 
   created() {
