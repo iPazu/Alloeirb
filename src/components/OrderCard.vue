@@ -114,13 +114,13 @@ export default {
     console.log(this.orderData.products)
     this.productData = JSON.parse(this.orderData.products)
     if(this.orderData.status === "delivering"){
-      this.colorstr = "green lighten-2"
+      this.colorstr = "green"
     }
     if(this.orderData.status === "validation"){
-      this.colorstr = "orange lighten-2"
+      this.colorstr = "orange"
     }
     if(this.orderData.status === "preparing"){
-      this.colorstr = "yellow lighten-1"
+      this.colorstr = "yellow "
     }
   }
 
