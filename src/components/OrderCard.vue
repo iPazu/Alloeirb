@@ -58,7 +58,7 @@ export default {
     return{
       show: false,
       productData: null,
-      qg: { alex:[ -0.6303,44.8108],noemie:[-0.5802,44.8056],dimitri:[ -0.5788,44.8234],antoinelh:[-0.6015,44.8215],theolm:[  -0.6031,44.8071]},
+      qg: { alex:[ -0.6303,44.8108],noemie:[-0.5802,44.8056],dimitri:[ -0.5788,44.8234],antoinelh:[-0.6015,44.8215],theolm:[  -0.6031,44.8071],amaux:[ -0.5996,44.8156]},
     }
   },
   methods:{
