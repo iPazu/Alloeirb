@@ -128,7 +128,7 @@ export default {
     console.log("eee")
     console.log(this.orderData.products)
     this.productData = JSON.parse(this.orderData.products)
-    this.updatingColor()
+    this.updateColor()
   }
 
 }
