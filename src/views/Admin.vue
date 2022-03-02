@@ -12,8 +12,6 @@
 .state.user_id)" :delivered="delivered" :select-coursier="selectCoursier" :accept-order="acceptOrder"
                       :order-data="order" :color="order.coursier === $store.state.user_id"/>
 
-
-
         </v-col>
       </v-row>
     </div>
@@ -48,7 +46,7 @@ export default {
       order.fetchOrders((products) => {
         console.log(products)
 
-        this.orders = [...products].reverse()
+        this.orders = [...products]
 
       })
     },
