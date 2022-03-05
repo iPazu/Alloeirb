@@ -1,6 +1,6 @@
 <template>
   <div>
-      <v-card elevation="2" sm-height :height="height()" class="mx-3 my-10 " :color="getColor()" @click="show = !show" >
+      <v-card elevation="2" sm-height :height="height()" class="mx-3 my-16 " :color="getColor()" @click="show = !show" >
         <div class="header d-flex flex-row flex-wrap">
 
 
