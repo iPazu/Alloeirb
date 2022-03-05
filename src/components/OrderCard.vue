@@ -130,6 +130,6 @@ export default {
 
 <style scoped>
 .paddingcard{
-  margin-bottom: 50em;
+  margin-bottom: 30em;
 }
 </style>
