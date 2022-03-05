@@ -124,7 +124,7 @@ export default {
       let last = Date.parse(lastdate)
       console.log(now)
       console.log(last)
-      return lastdate
+      return Date(now - last).toString()
     }
     ,
   },
