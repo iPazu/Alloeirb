@@ -122,7 +122,7 @@ export default {
       let now = Date.now()
       let last = Date.parse(lastdate)
       let remain = now-last
-      return ((remain / 1000) / 3600).toString() + "h" + ((remain / 1000) % 3600).toString() + "m"
+      return parseInt(parseInt(remain / 1000) / 3600) + "h" + parseInt(parseInt(remain / 1000) % 3600)+ "m"
     }
     ,
   },
