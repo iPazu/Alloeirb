@@ -5,7 +5,7 @@
       <v-divider class="my-9"></v-divider>
 
       <v-row>
-        <v-col sm="8" md="10" offset-md="1"  class="my-15 "  v-for="order in orders " :key="order.orderid" >
+        <v-col sm="8" md="10" offset-md="1"  v-for="order in orders " :key="order.orderid" >
 
 
           <OrderCard class="my-16" v-if="order.status !== 'delivering' || (order.status === 'delivering' && order.coursier === $store
