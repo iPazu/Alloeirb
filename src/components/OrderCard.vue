@@ -117,14 +117,7 @@ export default {
       }
     },
     getStringDate(){
-      let lastdate = this.orderData.date
-      lastdate[10] = ''
-      console.log(lastdate)
-      let now = Date.now()
-      let last = Date.parse(lastdate)
-      console.log(now)
-      console.log(last)
-      return lastdate
+      return this.orderData.date
     }
     ,
   },
