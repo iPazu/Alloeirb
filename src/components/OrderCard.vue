@@ -1,6 +1,6 @@
 <template>
   <div>
-      <v-card elevation="2" sm-height :height="height()" class="mx-3 paddingcard" :color="getColor()" @click="show = !show" >
+      <v-card elevation="2" sm-height :height="height()*2" class="mx-3 paddingcard" :color="getColor()" @click="show = !show" >
         <div class="header d-flex flex-row flex-wrap">
 
 
@@ -12,6 +12,7 @@
         <v-btn class="my-4 mx-3" @click="delivered(orderData.id)" v-if="orderData.status === 'delivering'" large color="secondary">Valider la livraison</v-btn>
         <v-btn class="my-4 mx-3" v-if="orderData.status === 'ranking'" large color="secondary">Livrée</v-btn>
         <v-btn class="my-4 mx-3" v-if="orderData.status === 'delivered'" large color="secondary">Livrée et notée</v-btn>
+          <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" >Il y a: 00h 00m €</p>
 
         </div>
         <v-expand-transition>
