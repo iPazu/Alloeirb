@@ -12,7 +12,7 @@
         <v-btn class="my-4 mx-3" @click="delivered(orderData.id)" v-if="orderData.status === 'delivering'" large color="secondary">Valider la livraison</v-btn>
         <v-btn class="my-4 mx-3" v-if="orderData.status === 'ranking'" large color="secondary">Livrée</v-btn>
         <v-btn class="my-4 mx-3" v-if="orderData.status === 'delivered'" large color="secondary">Livrée et notée</v-btn>
-          <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" >Il y a: {{getStringDate()}}</p>
+          <p class="flex justify-start mx-7 mt-2 pt-3 rounded-lg white elevation-4 number" >A {{getStringDate()}}</p>
 
         </div>
         <v-expand-transition>
@@ -119,10 +119,8 @@ export default {
     getStringDate(){
       let lastdate = this.orderData.date
       lastdate = lastdate.slice(0,11) + lastdate.slice(12,20)
-      let now = Date.now()
-      let last = Date.parse(lastdate)
-      let remain = now-last
-      return parseInt(parseInt(remain / 1000) / 3600) + "h" + parseInt(parseInt(remain / 1000) % 3600)+ "m"
+
+      return lastdate
     }
     ,
   },
