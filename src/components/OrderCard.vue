@@ -119,12 +119,10 @@ export default {
     getStringDate(){
       let lastdate = this.orderData.date
       lastdate = lastdate.slice(0,11) + lastdate.slice(12,20)
-      console.log(lastdate)
       let now = Date.now()
       let last = Date.parse(lastdate)
-      console.log(now)
-      console.log(last)
-      return Date(now - last).toString()
+      let remain = now-last
+      return ((remain / 1000) / 3600).toString() + "h" + ((remain / 1000) % 3600).toString() + "m"
     }
     ,
   },
