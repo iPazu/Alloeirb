@@ -46,7 +46,7 @@ export default {
       order.fetchOrders((products) => {
         console.log(products)
 
-        this.orders = [...products]
+        this.orders = [...products].reverse()
 
       })
     },
@@ -84,7 +84,7 @@ export default {
     }
     order.fetchOrders((products) => {
       console.log(products)
-      this.orders = [...products]
+      this.orders = [...products].reverse()
 
     })
     this.intervalOrders = setInterval(this.refreshOrders, 5000);
