@@ -125,7 +125,7 @@ export default {
       console.log(now)
       console.log(last)
       let date =Date(now-last)
-      console.log(date.toString())
+      console.log(lastdate)
     }
     ,
   },
