@@ -118,7 +118,7 @@ export default {
     },
     getStringDate(){
       let lastdate = this.orderData.date
-      lastdate = lastdate.slice(9,16)
+      lastdate = lastdate.slice(9,14)
 
       return lastdate
     }
